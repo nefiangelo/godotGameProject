@@ -1,25 +1,18 @@
 extends CharacterBody2D
 
+const SPEED = 200.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+func _physics_process(_delta: float) -> void:
+	# Pega as 4 direções de uma vez só! (Setinhas ou WASD)
+	# O get_vector já normaliza a velocidade na diagonal pra ele não correr mais rápido
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
 	if direction:
-		velocity.x = direction * SPEED
+		# Se estiver apertando alguma tecla, aplica a velocidade
+		velocity = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Se soltar as teclas, freia o boneco até parar
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 
+	# Tenta mover. Se bater em qualquer coisa, ele desliza pela lateral (parede)
 	move_and_slide()

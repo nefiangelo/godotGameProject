@@ -12,24 +12,23 @@ size = Vector2(1150, 128)
 [node name="Scene1" type="Node2D" unique_id=713127948]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=939318641]
+position = Vector2(562, 248)
 script = ExtResource("1_3xosi")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=493697955]
-position = Vector2(81, 79)
 texture = ExtResource("2_1abo5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=534738387]
-position = Vector2(81, 79)
 shape = SubResource("RectangleShape2D_knagl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1355341661]
-position = Vector2(-3, 527)
+position = Vector2(575, 579)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=2139251842]
-position = Vector2(578, 57)
 scale = Vector2(8.984375, 1)
 texture = ExtResource("2_1abo5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1710246480]
-position = Vector2(579, 57)
 shape = SubResource("RectangleShape2D_3xosi")
