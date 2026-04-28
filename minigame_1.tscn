@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ck6pedt337eyf"]
+
+[ext_resource type="Texture2D" uid="uid://d4joc26jcs64h" path="res://background/MINIGAMES.png" id="1_2n61g"]
+[ext_resource type="Script" uid="uid://bm46565erk3ot" path="res://VOLTAR2.gd" id="2_gi7k6"]
+
+[node name="Minigame1" type="Node2D" unique_id=1942749203]
+
+[node name="5673d18fF7474Da7B78f26e8361c6f87" type="Sprite2D" parent="." unique_id=999672107]
+position = Vector2(577.25, 324.68753)
+scale = Vector2(0.68869615, 0.6871678)
+texture = ExtResource("1_2n61g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1057501930]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1842954837]
+visible = false
+offset_right = 1155.0
+offset_bottom = 646.0
+
+[node name="voltar" type="Button" parent="." unique_id=827253538]
+offset_left = 114.0
+offset_top = 586.0
+offset_right = 210.0
+offset_bottom = 636.0
+theme_override_font_sizes/font_size = 30
+text = "Voltar"
+script = ExtResource("2_gi7k6")
+
+[node name="Label" type="Label" parent="." unique_id=196961031]
+offset_left = 411.0
+offset_top = 34.0
+offset_right = 740.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 25
+text = "SELECIONE OS MINIGAMES "
+
+[connection signal="pressed" from="voltar" to="voltar" method="_on_pressed"]
