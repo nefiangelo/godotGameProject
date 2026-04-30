@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxl11g16s7q76"]
 
 [ext_resource type="Texture2D" uid="uid://cn5k8gv5vamc3" path="res://background/73aa9ca9-520a-45a8-a16d-bd654aa8831a.png" id="1_fjibv"]
-[ext_resource type="Script" uid="uid://b0t5kgvbhtrx4" path="res://voltar.gd" id="2_acqxo"]
+[ext_resource type="Script" uid="uid://b0t5kgvbhtrx4" path="res://scripts/voltarGrid.gd" id="2_acqxo"]
 
 [node name="Ajuda" type="Node2D" unique_id=357173091]
 

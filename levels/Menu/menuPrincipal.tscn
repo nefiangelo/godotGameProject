@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs0o1hsjl06og"]
 
 [ext_resource type="Texture2D" uid="uid://h488nwlkjmlg" path="res://background/neurobox.png" id="1_0fbet"]
-[ext_resource type="Script" uid="uid://cslt3qehjusgb" path="res://scripts/control.gd" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://cslt3qehjusgb" path="res://scripts/menuFunctions.gd" id="1_62e2m"]
 
 [sub_resource type="FontVariation" id="FontVariation_uchyk"]
 
@@ -12,7 +12,7 @@ outline_color = Color(0.6634062, 0, 0.10286499, 1)
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.9843137)
 
-[node name="Control" type="Control" unique_id=1222987495]
+[node name="menuPrincipal" type="Control" unique_id=1222987495]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,8 +22,8 @@ grow_vertical = 2
 script = ExtResource("1_62e2m")
 
 [node name="Neurobox" type="Sprite2D" parent="." unique_id=798454989]
-position = Vector2(576.75, 323.5)
-scale = Vector2(0.7516276, 0.6298828)
+position = Vector2(639.50006, 360.24997)
+scale = Vector2(0.8339845, 0.70263666)
 texture = ExtResource("1_0fbet")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2137939798]
@@ -43,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -183.0
-offset_top = -254.0
-offset_right = 201.0
-offset_bottom = -185.0
+offset_left = -159.0
+offset_top = -248.0
+offset_right = 133.0
+offset_bottom = -179.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "NEURO BOX"
@@ -56,18 +56,20 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=179369257]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -85.0
-offset_right = 160.0
-offset_bottom = 85.0
+anchors_preset = -1
+anchor_left = 0.37600002
+anchor_top = 0.38200003
+anchor_right = 0.60400003
+anchor_bottom = 0.61800003
+offset_left = -0.2800293
+offset_top = -0.040008545
+offset_right = -0.12005615
+offset_bottom = 0.039978027
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="Iniciar" type="Button" parent="VBoxContainer" unique_id=1329095875]
 layout_mode = 2

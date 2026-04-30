@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Novo Projeto de Jogo"
-run/main_scene="res://control.tscn"
+run/main_scene="res://levels/Menu/menuPrincipal.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [physics]
 
