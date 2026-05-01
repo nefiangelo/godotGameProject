@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs0o1hsjl06og"]
 
 [ext_resource type="Texture2D" uid="uid://h488nwlkjmlg" path="res://background/neurobox.png" id="1_0fbet"]
-[ext_resource type="Script" uid="uid://cslt3qehjusgb" path="res://scripts/menuFunctions.gd" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://cslt3qehjusgb" path="res://scripts/ScriptsMenu/menuFunctions.gd" id="1_62e2m"]
 
 [sub_resource type="FontVariation" id="FontVariation_uchyk"]
 
@@ -21,13 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62e2m")
 
-[node name="Neurobox" type="Sprite2D" parent="." unique_id=798454989]
-position = Vector2(639.50006, 360.24997)
-scale = Vector2(0.8339845, 0.70263666)
-texture = ExtResource("1_0fbet")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2137939798]
-visible = false
+[node name="BackGround" type="ColorRect" parent="." unique_id=2137939798]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +29,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Neurobox" type="Sprite2D" parent="." unique_id=798454989]
+position = Vector2(639.50006, 360.24997)
+scale = Vector2(0.8339845, 0.70263666)
+texture = ExtResource("1_0fbet")
 
 [node name="Label" type="Label" parent="." unique_id=1952611029]
 layout_mode = 1

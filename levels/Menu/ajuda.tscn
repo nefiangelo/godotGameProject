@@ -1,26 +1,27 @@
 [gd_scene format=3 uid="uid://dxl11g16s7q76"]
 
+[ext_resource type="Script" uid="uid://cea88tcpou2u6" path="res://scripts/ScriptsMenu/telaAjuda.gd" id="1_5whu0"]
 [ext_resource type="Texture2D" uid="uid://cn5k8gv5vamc3" path="res://background/73aa9ca9-520a-45a8-a16d-bd654aa8831a.png" id="1_fjibv"]
-[ext_resource type="Script" uid="uid://b0t5kgvbhtrx4" path="res://scripts/voltarGrid.gd" id="2_acqxo"]
 
-[node name="Ajuda" type="Node2D" unique_id=357173091]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1110094813]
-offset_right = 1147.0
-offset_bottom = 649.0
+[node name="Ajuda" type="Control" unique_id=745166747]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5whu0")
+metadata/_edit_vertical_guides_ = [640.0]
+metadata/_edit_horizontal_guides_ = [360.0]
 
 [node name="73Aa9Ca9520a45a8A16dBd654Aa8831a" type="Sprite2D" parent="." unique_id=981317578]
-position = Vector2(573, 320.99997)
-scale = Vector2(0.7586568, 0.65347284)
+position = Vector2(620, 344.00006)
+scale = Vector2(0.90104175, 0.7500001)
 texture = ExtResource("1_fjibv")
 
 [node name="voltar" type="Button" parent="." unique_id=71638545]
-offset_left = 516.0
-offset_top = 529.0
-offset_right = 663.0
-offset_bottom = 573.0
+layout_mode = 0
+offset_left = 568.0
+offset_top = 576.0
+offset_right = 715.0
+offset_bottom = 626.0
 theme_override_font_sizes/font_size = 30
 text = "Voltar"
-script = ExtResource("2_acqxo")
 
-[connection signal="pressed" from="voltar" to="voltar" method="_on_pressed"]
+[connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]

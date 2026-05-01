@@ -1,39 +1,105 @@
 [gd_scene format=3 uid="uid://ck6pedt337eyf"]
 
+[ext_resource type="Script" uid="uid://c3jayyka1djd8" path="res://scripts/ScriptsMenu/gridGamesFunctions.gd" id="1_74xny"]
 [ext_resource type="Texture2D" uid="uid://d4joc26jcs64h" path="res://background/MINIGAMES.png" id="1_wmgh8"]
-[ext_resource type="Script" uid="uid://bm46565erk3ot" path="res://scripts/voltarAjuda.gd" id="2_74xny"]
+[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://icon.svg" id="2_ko4qm"]
 
-[node name="gridGames" type="Node2D" unique_id=1942749203]
+[node name="gridGames" type="Control" unique_id=17477785]
+layout_mode = 3
+anchor_right = 0.058000002
+anchor_bottom = 0.11000001
+offset_right = -74.240005
+offset_bottom = -79.200005
+script = ExtResource("1_74xny")
+
+[node name="BackGround" type="ColorRect" parent="." unique_id=228144245]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
 
 [node name="5673d18fF7474Da7B78f26e8361c6f87" type="Sprite2D" parent="." unique_id=999672107]
-position = Vector2(577.25, 324.68753)
-scale = Vector2(0.68869615, 0.6871678)
+position = Vector2(640.75006, 360.68756)
+scale = Vector2(0.76465315, 0.76368225)
 texture = ExtResource("1_wmgh8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1057501930]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1842954837]
-visible = false
-offset_right = 1155.0
-offset_bottom = 646.0
-
 [node name="voltar" type="Button" parent="." unique_id=827253538]
+layout_mode = 0
 offset_left = 114.0
 offset_top = 586.0
 offset_right = 210.0
 offset_bottom = 636.0
 theme_override_font_sizes/font_size = 30
 text = "Voltar"
-script = ExtResource("2_74xny")
 
 [node name="Label" type="Label" parent="." unique_id=196961031]
-offset_left = 411.0
-offset_top = 34.0
-offset_right = 740.0
-offset_bottom = 69.0
+layout_mode = 0
+offset_left = 465.0
+offset_top = 26.0
+offset_right = 794.0
+offset_bottom = 61.0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "SELECIONE OS MINIGAMES "
 
-[connection signal="pressed" from="voltar" to="voltar" method="_on_pressed"]
+[node name="HScrollBar" type="ScrollContainer" parent="." unique_id=1356464124]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 98.0
+offset_right = 1141.0
+offset_bottom = 519.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HScrollBar" unique_id=327090353]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=1821331094]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer" unique_id=549934521]
+layout_mode = 2
+icon = ExtResource("2_ko4qm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HScrollBar/VBoxContainer/HBoxContainer" unique_id=1045632197]
+layout_mode = 2
+
+[node name="TituloMiniGame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=630643684]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "TITULO MINIGAME 1"
+
+[node name="SubtituloMinigame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1670207745]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "asldjalsk asdasdasda sd asd asd asd as
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=262324065]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer2" unique_id=802945104]
+layout_mode = 2
+icon = ExtResource("2_ko4qm")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=897012251]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer3" unique_id=1404105585]
+layout_mode = 2
+icon = ExtResource("2_ko4qm")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=1447487752]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer4" unique_id=1216803197]
+layout_mode = 2
+icon = ExtResource("2_ko4qm")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=667903646]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer5" unique_id=1148875247]
+layout_mode = 2
+icon = ExtResource("2_ko4qm")
+
+[connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="HScrollBar/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
