@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d4joc26jcs64h" path="res://background/MINIGAMES.png" id="1_wmgh8"]
 [ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://icon.svg" id="2_ko4qm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74xny"]
+bg_color = Color(0, 0, 0, 0.8039216)
+
 [node name="gridGames" type="Control" unique_id=17477785]
 layout_mode = 3
 anchor_right = 0.058000002
@@ -11,6 +14,8 @@ anchor_bottom = 0.11000001
 offset_right = -74.240005
 offset_bottom = -79.200005
 script = ExtResource("1_74xny")
+metadata/_edit_horizontal_guides_ = [360.0]
+metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=228144245]
 layout_mode = 0
@@ -25,10 +30,10 @@ texture = ExtResource("1_wmgh8")
 
 [node name="voltar" type="Button" parent="." unique_id=827253538]
 layout_mode = 0
-offset_left = 114.0
-offset_top = 586.0
-offset_right = 210.0
-offset_bottom = 636.0
+offset_left = 179.0
+offset_top = 618.0
+offset_right = 275.0
+offset_bottom = 668.0
 theme_override_font_sizes/font_size = 30
 text = "Voltar"
 
@@ -44,10 +49,11 @@ text = "SELECIONE OS MINIGAMES "
 
 [node name="HScrollBar" type="ScrollContainer" parent="." unique_id=1356464124]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 98.0
-offset_right = 1141.0
-offset_bottom = 519.0
+offset_left = 179.0
+offset_top = 136.0
+offset_right = 1091.0
+offset_bottom = 557.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_74xny")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HScrollBar" unique_id=327090353]
 layout_mode = 2
@@ -64,14 +70,17 @@ layout_mode = 2
 
 [node name="TituloMiniGame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=630643684]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "TITULO MINIGAME 1"
+theme_override_colors/font_color = Color(0.18039216, 0.5764706, 1, 1)
+theme_override_colors/font_outline_color = Color(1.92523e-06, 0, 0.94145715, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "ESTOQUE EM COLAPSO"
 
 [node name="SubtituloMinigame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1670207745]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "asldjalsk asdasdasda sd asd asd asd as
-"
+theme_override_font_sizes/font_size = 20
+text = "O estoque de suprimentos está um caos! 
+Precisamos da sua ajuda o mais rápido possível."
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=262324065]
 layout_mode = 2
