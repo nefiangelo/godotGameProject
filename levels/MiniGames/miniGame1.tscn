@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://l1lph4jv6hs0" path="res://scripts/empilhadeira.gd" id="1_0o4v5"]
 [ext_resource type="Texture2D" uid="uid://obuwktnyk62s" path="res://sprites/MiniGame1/empilhadeira 1.png" id="1_lt2in"]
+[ext_resource type="Texture2D" uid="uid://b36xa777om1pd" path="res://sprites/MiniGame1/background.png" id="1_ujjem"]
+[ext_resource type="Texture2D" uid="uid://rpka4flo0k5v" path="res://sprites/MiniGame1/esteira 1.png" id="2_wwmin"]
 [ext_resource type="Texture2D" uid="uid://dv24mff04ub04" path="res://sprites/MiniGame1/placa_empilhadeira.png" id="3_yk17p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o4v5"]
@@ -11,7 +13,7 @@ size = Vector2(248, 88)
 size = Vector2(184, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk17p"]
-size = Vector2(20.297153, 10.360519)
+size = Vector2(26.272053, 14.50473)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujjem"]
 size = Vector2(3.4319139, 171.31062)
@@ -23,8 +25,20 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=261021541]
+position = Vector2(639, 357.75)
+scale = Vector2(0.6719078, 0.7602308)
+texture = ExtResource("1_ujjem")
+
+[node name="esteira" type="StaticBody2D" parent="." unique_id=238122666]
+position = Vector2(1112, 554)
+
+[node name="Sprite2D" type="Sprite2D" parent="esteira" unique_id=1347949248]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_wwmin")
+
 [node name="Empilhadeira" type="CharacterBody2D" parent="." unique_id=1912987145]
-position = Vector2(648, 496)
+position = Vector2(632, 488)
 script = ExtResource("1_0o4v5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Empilhadeira" unique_id=1546076765]
@@ -52,7 +66,7 @@ position = Vector2(648, 640)
 scale = Vector2(62.930008, 7.7216187)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=61815242]
-position = Vector2(-0.14857197, 5.1802597)
+position = Vector2(-3.1360192, 3.1081543)
 shape = SubResource("RectangleShape2D_yk17p")
 
 [node name="wall" type="StaticBody2D" parent="." unique_id=1909175880]
@@ -61,5 +75,14 @@ rotation = -1.5707964
 scale = Vector2(186.48491, 0.6741693)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1399269031]
-position = Vector2(0, -6.1035156e-05)
+position = Vector2(0.042899128, -308.52786)
+shape = SubResource("RectangleShape2D_ujjem")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=1465393515]
+position = Vector2(1304.0001, 303.99997)
+rotation = -1.5707964
+scale = Vector2(186.48491, 0.6741693)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=110927494]
+position = Vector2(1.4901161e-07, -11.86644)
 shape = SubResource("RectangleShape2D_ujjem")
