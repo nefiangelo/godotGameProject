@@ -4,21 +4,20 @@ extends CharacterBody2D
 const SPEED = 300.0
 const VELOCIDADE_PLACA = 150.0
 
-const LIMITE_ALTO = -120.0 
+const LIMITE_ALTO = -180.0 
 const LIMITE_BAIXO = 20.0 
 
 @onready var sprite_pallet = $spritePallete
 @onready var colisao_pallet = $collisionPallete
 
-# 1. Nova variável para guardar a diferença de altura entre eles
 var diferenca_y: float
+var segurando_caixa: bool = false # Mantém essa variável aqui!
 
 func _ready() -> void:
-	# 2. Quando o jogo abre, ele anota a diferença exata entre a Colisão e o Sprite
 	diferenca_y = colisao_pallet.position.y - sprite_pallet.position.y
 
 func _physics_process(delta: float) -> void:
-	# --- 1. FÍSICA E MOVIMENTO DA EMPILHADEIRA ---
+	# --- FÍSICA E MOVIMENTO ---
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -30,13 +29,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# --- 2. MOVIMENTO DA PLACA (ELEVADOR) ---
+	# --- MOVIMENTO DA PLACA ---
 	var direcao_placa := Input.get_axis("ui_up", "ui_down")
 	
 	if direcao_placa != 0:
 		sprite_pallet.position.y += direcao_placa * VELOCIDADE_PLACA * delta
 		sprite_pallet.position.y = clamp(sprite_pallet.position.y, LIMITE_ALTO, LIMITE_BAIXO)
-		
-		# 3. A MÁGICA CORRIGIDA: A colisão copia a posição do sprite, 
-		# mas SOMA a diferença original para manter o encaixe perfeito!
 		colisao_pallet.position.y = sprite_pallet.position.y + diferenca_y
