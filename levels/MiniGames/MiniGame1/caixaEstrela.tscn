@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cw6cma1wxhrt6"]
+
+[ext_resource type="Script" uid="uid://c7yr2a7ucq1ty" path="res://scripts/ScriptsMiniGame1/caixa_generica.gd" id="1_jnmr4"]
+[ext_resource type="Texture2D" uid="uid://bnu5eru14l6wm" path="res://sprites/MiniGame1/caixa_2 1.png" id="2_jnmr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uagl4"]
+size = Vector2(80, 80)
+
+[node name="caixaGenérica" type="Area2D" unique_id=47419360]
+script = ExtResource("1_jnmr4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1954115718]
+scale = Vector2(0.2088773, 0.19900498)
+texture = ExtResource("2_jnmr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=219115873]
+shape = SubResource("RectangleShape2D_uagl4")

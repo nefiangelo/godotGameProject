@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://rpka4flo0k5v" path="res://sprites/MiniGame1/esteira 1.png" id="2_tsngy"]
 [ext_resource type="Script" uid="uid://l1lph4jv6hs0" path="res://scripts/ScriptsMiniGame1/empilhadeira.gd" id="3_fs4be"]
 [ext_resource type="Texture2D" uid="uid://obuwktnyk62s" path="res://sprites/MiniGame1/empilhadeira 1.png" id="4_6e3qb"]
+[ext_resource type="PackedScene" uid="uid://430m07x6lcv4" path="res://levels/MiniGames/MiniGame1/caixaCirculo.tscn" id="4_65ijb"]
+[ext_resource type="PackedScene" uid="uid://cw6cma1wxhrt6" path="res://levels/MiniGames/MiniGame1/caixaEstrela.tscn" id="5_mgmxa"]
 [ext_resource type="Texture2D" uid="uid://dv24mff04ub04" path="res://sprites/MiniGame1/placa_empilhadeira.png" id="5_pkgwr"]
 [ext_resource type="Script" uid="uid://b30y5tax2k7y8" path="res://scripts/ScriptsMiniGame1/GeradorDeCaixas.gd" id="6_213gh"]
 [ext_resource type="PackedScene" uid="uid://dq3nd83n3ca60" path="res://levels/MiniGames/MiniGame1/caixaGenerica.tscn" id="7_tsngy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o4v5"]
-size = Vector2(248, 88)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwmin"]
-size = Vector2(184, 16)
+[ext_resource type="PackedScene" uid="uid://bqthskgs28old" path="res://levels/MiniGames/MiniGame1/caixaQuadrado.tscn" id="7_wkugo"]
+[ext_resource type="PackedScene" uid="uid://678gbvfg7tfa" path="res://levels/MiniGames/MiniGame1/caixaTriangulo.tscn" id="8_70au6"]
+[ext_resource type="PackedScene" uid="uid://brhm4kxri33d4" path="res://levels/MiniGames/MiniGame1/slotPrateleira.tscn" id="8_fs4be"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk17p"]
 size = Vector2(26.272053, 18.648933)
@@ -22,6 +21,12 @@ size = Vector2(3.4319139, 275.5188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
 size = Vector2(64, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o4v5"]
+size = Vector2(248, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwmin"]
+size = Vector2(184, 16)
 
 [node name="Node2D" type="Node2D" unique_id=1945731605]
 metadata/_edit_horizontal_guides_ = [488.0]
@@ -43,6 +48,51 @@ position = Vector2(1112, 554)
 position = Vector2(27, -8)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_tsngy")
+
+[node name="ground" type="StaticBody2D" parent="." unique_id=1207091126]
+position = Vector2(648, 640)
+scale = Vector2(62.930008, 7.7216187)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=61815242]
+position = Vector2(-3.1360192, 1.0360489)
+shape = SubResource("RectangleShape2D_yk17p")
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=1909175880]
+position = Vector2(-40, 320.00003)
+rotation = -1.5707964
+scale = Vector2(186.48491, 0.6741693)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1399269031]
+position = Vector2(0.04289925, -442.02545)
+shape = SubResource("RectangleShape2D_ujjem")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=1465393515]
+position = Vector2(1304.0001, 303.99997)
+rotation = -1.5707964
+scale = Vector2(186.48491, 0.6741693)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=110927494]
+position = Vector2(1.0728836e-06, -63.97058)
+shape = SubResource("RectangleShape2D_ujjem")
+
+[node name="GeradorDeCaixas" type="Area2D" parent="." unique_id=697320556]
+position = Vector2(1008, 488)
+script = ExtResource("6_213gh")
+lista_de_caixas = Array[PackedScene]([ExtResource("4_65ijb"), ExtResource("5_mgmxa"), ExtResource("7_tsngy"), ExtResource("7_wkugo"), ExtResource("8_70au6")])
+posicao_spawn = Vector2(1300, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GeradorDeCaixas" unique_id=1339928724]
+position = Vector2(-8, 30)
+shape = SubResource("RectangleShape2D_65ijb")
+
+[node name="slotPrateleira" parent="." unique_id=1423070600 instance=ExtResource("8_fs4be")]
+position = Vector2(144, 200)
+
+[node name="slotPrateleira2" parent="." unique_id=1136487044 instance=ExtResource("8_fs4be")]
+position = Vector2(144, 424)
+
+[node name="slotPrateleira3" parent="." unique_id=1112258953 instance=ExtResource("8_fs4be")]
+position = Vector2(144, 312)
 
 [node name="Empilhadeira" type="CharacterBody2D" parent="." unique_id=1912987145]
 position = Vector2(632, 463)
@@ -68,43 +118,13 @@ scale = Vector2(0.9999999, 0.99999994)
 shape = SubResource("RectangleShape2D_wwmin")
 debug_color = Color(0, 0.6, 0.69803923, 0.42745098)
 
-[node name="ground" type="StaticBody2D" parent="." unique_id=1207091126]
-position = Vector2(648, 640)
-scale = Vector2(62.930008, 7.7216187)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=61815242]
-position = Vector2(-3.1360192, 1.0360489)
-shape = SubResource("RectangleShape2D_yk17p")
-
-[node name="wall" type="StaticBody2D" parent="." unique_id=1909175880]
-position = Vector2(-40, 320.00003)
-rotation = -1.5707964
-scale = Vector2(186.48491, 0.6741693)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1399269031]
-position = Vector2(0.04289925, -351.54373)
-shape = SubResource("RectangleShape2D_ujjem")
-
-[node name="wall2" type="StaticBody2D" parent="." unique_id=1465393515]
-position = Vector2(1304.0001, 303.99997)
-rotation = -1.5707964
-scale = Vector2(186.48491, 0.6741693)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=110927494]
-position = Vector2(1.0728836e-06, -63.97058)
-shape = SubResource("RectangleShape2D_ujjem")
-
-[node name="GeradorDeCaixas" type="Area2D" parent="." unique_id=697320556]
-position = Vector2(1008, 488)
-script = ExtResource("6_213gh")
-cena_da_caixa = ExtResource("7_tsngy")
-posicao_spawn = Vector2(1300, 480)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GeradorDeCaixas" unique_id=1339928724]
-position = Vector2(-8, 30)
-shape = SubResource("RectangleShape2D_65ijb")
-
 [connection signal="area_entered" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_entered"]
 [connection signal="area_exited" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_exited"]
 [connection signal="body_entered" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_body_entered"]
 [connection signal="body_exited" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_body_exited"]
+[connection signal="area_entered" from="slotPrateleira" to="slotPrateleira" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira" to="slotPrateleira" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira2" to="slotPrateleira2" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira2" to="slotPrateleira2" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira3" to="slotPrateleira3" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira3" to="slotPrateleira3" method="_on_area_exited"]

@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const VELOCIDADE_PLACA = 150.0
 
-const LIMITE_ALTO = -180.0 
+const LIMITE_ALTO = -300.0 
 const LIMITE_BAIXO = 20.0 
 
 @onready var sprite_pallet = $spritePallete

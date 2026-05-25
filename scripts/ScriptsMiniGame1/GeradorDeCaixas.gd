@@ -1,12 +1,13 @@
 extends Area2D
 
-@export var cena_da_caixa: PackedScene
+@export var lista_de_caixas: Array[PackedScene] = []
 @export var posicao_spawn: Vector2 = Vector2(600, 270) 
 
 var empilhadeira_na_area = null
 var caixa_pronta_para_coleta = null
 
 func _ready() -> void:
+	randomize()
 	spawnar_caixa_na_esteira()
 
 # --- 1. SINAIS PARA A EMPILHADEIRA (BODIES) ---
@@ -35,7 +36,19 @@ func _process(_delta: float) -> void:
 			coletar_caixa()
 
 func spawnar_caixa_na_esteira() -> void:
-	var nova_caixa = cena_da_caixa.instantiate()
+	# Segurança: se você esquecer de colocar caixas na lista, o jogo não crasha
+	if lista_de_caixas.size() == 0:
+		print("Aviso: Adicione as caixas na lista do Inspector!")
+		return
+		
+	# A MÁGICA DO SORTEIO:
+	# randi() gera um número gigante aleatório. 
+	# O '%' limita esse número ao tamanho da sua lista (de 0 a 3, se tiver 4 caixas).
+	var indice_aleatorio = randi() % lista_de_caixas.size()
+	
+	# Pega a cena sorteada e instancia ela
+	var nova_caixa = lista_de_caixas[indice_aleatorio].instantiate()
+	
 	get_parent().add_child.call_deferred(nova_caixa)
 	nova_caixa.global_position = posicao_spawn
 
