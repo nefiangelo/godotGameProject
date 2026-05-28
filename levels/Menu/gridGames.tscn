@@ -1,18 +1,26 @@
 [gd_scene format=3 uid="uid://ck6pedt337eyf"]
 
 [ext_resource type="Script" uid="uid://c3jayyka1djd8" path="res://scripts/ScriptsMenu/gridGamesFunctions.gd" id="1_74xny"]
-[ext_resource type="Texture2D" uid="uid://d4joc26jcs64h" path="res://background/MINIGAMES.png" id="1_wmgh8"]
-[ext_resource type="Texture2D" uid="uid://c75jrp57x4wfs" path="res://icon.svg" id="2_ko4qm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74xny"]
-bg_color = Color(0, 0, 0, 0.8039216)
+[ext_resource type="Texture2D" uid="uid://dt2e76rrrs08j" path="res://sprites/menu/background_menu.png" id="2_74xny"]
+[ext_resource type="Texture2D" uid="uid://cixv6nm5xuvor" path="res://sprites/menu/grid.png" id="3_hd3of"]
+[ext_resource type="Script" uid="uid://bw3r68kn1ra4o" path="res://scripts/ScriptsMenu/grid_minigames.gd" id="4_3mk27"]
+[ext_resource type="Texture2D" uid="uid://b0s4ha64gaqme" path="res://sprites/menu/Neuro box logo 1.png" id="5_3mk27"]
+[ext_resource type="Texture2D" uid="uid://bha1s8fjuhufd" path="res://sprites/menu/estoque_em_colapso.png" id="5_efuxb"]
+[ext_resource type="Texture2D" uid="uid://bpl5ltrt5b7gv" path="res://sprites/menu/btn_backward.png" id="6_8wvnr"]
+[ext_resource type="Texture2D" uid="uid://dtreh70mq642e" path="res://sprites/menu/btn_foward.png" id="7_ffvse"]
+[ext_resource type="Texture2D" uid="uid://dedoulw0dr6fg" path="res://sprites/menu/btn_backward_hover.png" id="7_jm8iq"]
+[ext_resource type="Texture2D" uid="uid://deulsmtbye2m3" path="res://sprites/menu/btn_backward_disabled.png" id="8_efuxb"]
+[ext_resource type="Texture2D" uid="uid://rtbqgffsmdw1" path="res://sprites/menu/btnc_forward_hover.png" id="9_nnetx"]
+[ext_resource type="Texture2D" uid="uid://bpb5vgqby0ptx" path="res://sprites/menu/btnc_forward_disabled.png" id="11_88cru"]
+[ext_resource type="Texture2D" uid="uid://cvpgfqpo561gk" path="res://sprites/menu/btn_voltar.png" id="13_ql5vi"]
+[ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="14_wstin"]
 
 [node name="gridGames" type="Control" unique_id=17477785]
 layout_mode = 3
-anchor_right = 0.058000002
-anchor_bottom = 0.11000001
-offset_right = -74.240005
-offset_bottom = -79.200005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
 script = ExtResource("1_74xny")
 metadata/_edit_horizontal_guides_ = [360.0]
 metadata/_edit_vertical_guides_ = [640.0]
@@ -23,92 +31,107 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
-[node name="5673d18fF7474Da7B78f26e8361c6f87" type="Sprite2D" parent="." unique_id=999672107]
-position = Vector2(640.75006, 360.68756)
-scale = Vector2(0.76465315, 0.76368225)
-texture = ExtResource("1_wmgh8")
+[node name="background_menu" type="Sprite2D" parent="." unique_id=999672107]
+position = Vector2(640, 360.00003)
+scale = Vector2(0.6666666, 0.6666667)
+texture = ExtResource("2_74xny")
 
-[node name="voltar" type="Button" parent="." unique_id=827253538]
+[node name="grid" type="Sprite2D" parent="." unique_id=2005338195]
+position = Vector2(635.00006, 356.5)
+scale = Vector2(0.68858457, 0.654521)
+texture = ExtResource("3_hd3of")
+
+[node name="gridMinigames" type="Control" parent="." unique_id=1245473530]
+anchors_preset = 0
+offset_left = 258.0
+offset_top = 178.00002
+offset_right = 1012.0
+offset_bottom = 515.0
+script = ExtResource("4_3mk27")
+
+[node name="listaMinigames" type="VBoxContainer" parent="gridMinigames" unique_id=327090353]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 618.0
-offset_right = 275.0
-offset_bottom = 668.0
+offset_top = 9.999985
+offset_right = 754.0
+offset_bottom = 437.0
+
+[node name="BlockMiniGame1" type="MarginContainer" parent="gridMinigames/listaMinigames" unique_id=32225912]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="gridMinigames/listaMinigames/BlockMiniGame1" unique_id=549934521]
+layout_mode = 2
+
+[node name="StylesItems" type="HBoxContainer" parent="gridMinigames/listaMinigames/BlockMiniGame1" unique_id=935895548]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="gridMinigames/listaMinigames/BlockMiniGame1/StylesItems" unique_id=81368880]
+custom_minimum_size = Vector2(180, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_efuxb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Texts" type="VBoxContainer" parent="gridMinigames/listaMinigames/BlockMiniGame1/StylesItems" unique_id=1620422970]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TituloMinigame" type="Label" parent="gridMinigames/listaMinigames/BlockMiniGame1/StylesItems/Texts" unique_id=1423595224]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9490196)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
-text = "Voltar"
-
-[node name="Label" type="Label" parent="." unique_id=196961031]
-layout_mode = 0
-offset_left = 465.0
-offset_top = 26.0
-offset_right = 794.0
-offset_bottom = 61.0
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
-text = "SELECIONE OS MINIGAMES "
-
-[node name="HScrollBar" type="ScrollContainer" parent="." unique_id=1356464124]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 136.0
-offset_right = 1091.0
-offset_bottom = 557.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_74xny")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HScrollBar" unique_id=327090353]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=1821331094]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer" unique_id=549934521]
-layout_mode = 2
-icon = ExtResource("2_ko4qm")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HScrollBar/VBoxContainer/HBoxContainer" unique_id=1045632197]
-layout_mode = 2
-
-[node name="TituloMiniGame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=630643684]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.18039216, 0.5764706, 1, 1)
-theme_override_colors/font_outline_color = Color(1.92523e-06, 0, 0.94145715, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 40
 text = "ESTOQUE EM COLAPSO"
 
-[node name="SubtituloMinigame" type="Label" parent="HScrollBar/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1670207745]
+[node name="SubTituloMiniGame" type="Label" parent="gridMinigames/listaMinigames/BlockMiniGame1/StylesItems/Texts" unique_id=746784083]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "O estoque de suprimentos está um caos! 
-Precisamos da sua ajuda o mais rápido possível."
+theme_override_colors/font_color = Color(1, 1, 1, 0.7176471)
+theme_override_font_sizes/font_size = 22
+text = "Organize o estoque o mais rápido que conseguir!"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=262324065]
+[node name="navButtons" type="HBoxContainer" parent="gridMinigames" unique_id=1577808397]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 361.0
+offset_right = 451.0
+offset_bottom = 416.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="BtnAnterior" type="TextureButton" parent="gridMinigames/navButtons" unique_id=305044882]
 layout_mode = 2
+texture_normal = ExtResource("6_8wvnr")
+texture_hover = ExtResource("7_jm8iq")
+texture_disabled = ExtResource("8_efuxb")
 
-[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer2" unique_id=802945104]
+[node name="BtnProximo" type="TextureButton" parent="gridMinigames/navButtons" unique_id=1369358833]
 layout_mode = 2
-icon = ExtResource("2_ko4qm")
+texture_normal = ExtResource("7_ffvse")
+texture_hover = ExtResource("9_nnetx")
+texture_disabled = ExtResource("11_88cru")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=897012251]
-layout_mode = 2
+[node name="NeuroBox" type="Sprite2D" parent="." unique_id=466468334]
+position = Vector2(640, 66.00001)
+scale = Vector2(0.26016238, 0.28571427)
+texture = ExtResource("5_3mk27")
 
-[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer3" unique_id=1404105585]
-layout_mode = 2
-icon = ExtResource("2_ko4qm")
+[node name="voltar" type="TextureButton" parent="." unique_id=1118489944]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 637.0
+offset_right = 722.0
+offset_bottom = 673.0
+texture_normal = ExtResource("13_ql5vi")
+texture_hover = ExtResource("14_wstin")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=1447487752]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer4" unique_id=1216803197]
-layout_mode = 2
-icon = ExtResource("2_ko4qm")
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="HScrollBar/VBoxContainer" unique_id=667903646]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="HScrollBar/VBoxContainer/HBoxContainer5" unique_id=1148875247]
-layout_mode = 2
-icon = ExtResource("2_ko4qm")
-
+[connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="gridMinigames/navButtons/BtnAnterior" to="gridMinigames" method="_on_btn_anterior_pressed"]
+[connection signal="pressed" from="gridMinigames/navButtons/BtnProximo" to="gridMinigames" method="_on_btn_proximo_pressed"]
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
-[connection signal="pressed" from="HScrollBar/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

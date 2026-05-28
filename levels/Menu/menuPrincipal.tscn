@@ -1,16 +1,14 @@
 [gd_scene format=3 uid="uid://bs0o1hsjl06og"]
 
-[ext_resource type="Texture2D" uid="uid://h488nwlkjmlg" path="res://background/neurobox.png" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://cslt3qehjusgb" path="res://scripts/ScriptsMenu/menuFunctions.gd" id="1_62e2m"]
-
-[sub_resource type="FontVariation" id="FontVariation_uchyk"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0fbet"]
-font = SubResource("FontVariation_uchyk")
-font_size = 50
-outline_color = Color(0.6634062, 0, 0.10286499, 1)
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 0.9843137)
+[ext_resource type="Texture2D" uid="uid://dt2e76rrrs08j" path="res://sprites/menu/background_menu.png" id="2_s0wdo"]
+[ext_resource type="Texture2D" uid="uid://c2qyg08c1jfcc" path="res://sprites/menu/btn_jogar.png" id="3_gvjqw"]
+[ext_resource type="Texture2D" uid="uid://tlv4pmo8urhx" path="res://sprites/menu/btn_jogar_hover.png" id="4_k03cp"]
+[ext_resource type="Texture2D" uid="uid://b0s4ha64gaqme" path="res://sprites/menu/Neuro box logo 1.png" id="5_0blv0"]
+[ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="5_yw7fv"]
+[ext_resource type="Texture2D" uid="uid://bbysvsx5skd7i" path="res://sprites/menu/btn_ajuda_hover.png" id="6_8n11r"]
+[ext_resource type="Texture2D" uid="uid://dg8e2agqfx3hs" path="res://sprites/menu/btn_sair.png" id="7_bxkrn"]
+[ext_resource type="Texture2D" uid="uid://cobk1u6hw1qec" path="res://sprites/menu/btn_sair_hover.png" id="8_uouof"]
 
 [node name="menuPrincipal" type="Control" unique_id=1222987495]
 layout_mode = 3
@@ -20,6 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62e2m")
+metadata/_edit_horizontal_guides_ = [365.0]
+metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=2137939798]
 layout_mode = 1
@@ -30,61 +30,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Neurobox" type="Sprite2D" parent="." unique_id=798454989]
-position = Vector2(639.50006, 360.24997)
-scale = Vector2(0.8339845, 0.70263666)
-texture = ExtResource("1_0fbet")
-
-[node name="Label" type="Label" parent="." unique_id=1952611029]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -248.0
-offset_right = 133.0
-offset_bottom = -179.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "NEURO BOX"
-label_settings = SubResource("LabelSettings_0fbet")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BackGroundImage" type="Sprite2D" parent="." unique_id=798454989]
+position = Vector2(639.99994, 359.99997)
+scale = Vector2(0.6666667, 0.6666666)
+texture = ExtResource("2_s0wdo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=179369257]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.37600002
-anchor_top = 0.38200003
-anchor_right = 0.60400003
-anchor_bottom = 0.61800003
-offset_left = -0.2800293
-offset_top = -0.040008545
-offset_right = -0.12005615
-offset_bottom = 0.039978027
+anchor_left = 0.39900002
+anchor_top = 0.41200003
+anchor_right = 0.60200006
+anchor_bottom = 0.70500004
+offset_left = -29.720032
+offset_top = 3.3599854
+offset_right = 34.43994
+offset_bottom = 55.399963
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(150, 85)
 size_flags_horizontal = 4
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Iniciar" type="Button" parent="VBoxContainer" unique_id=1329095875]
+[node name="Iniciar" type="TextureButton" parent="VBoxContainer" unique_id=1611749973]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Iniciar"
+texture_normal = ExtResource("3_gvjqw")
+texture_hover = ExtResource("4_k03cp")
 
-[node name="Ajuda" type="Button" parent="VBoxContainer" unique_id=1333698828]
+[node name="Ajuda" type="TextureButton" parent="VBoxContainer" unique_id=1797200923]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Ajuda
-"
+texture_normal = ExtResource("5_yw7fv")
+texture_hover = ExtResource("6_8n11r")
 
-[node name="Sair" type="Button" parent="VBoxContainer" unique_id=615152919]
+[node name="Sair" type="TextureButton" parent="VBoxContainer" unique_id=1840802047]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Sair"
+texture_normal = ExtResource("7_bxkrn")
+texture_hover = ExtResource("8_uouof")
+
+[node name="NeuroBox" type="Sprite2D" parent="." unique_id=1856527144]
+position = Vector2(640, 140)
+scale = Vector2(0.66718745, 0.66620374)
+texture = ExtResource("5_0blv0")
 
 [connection signal="pressed" from="VBoxContainer/Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Ajuda" to="." method="_on_ajuda_pressed"]

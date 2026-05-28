@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://55bq8tuyiy3o"
-path="res://.godot/imported/quarto1.png-2c2f7c4e9ca85a35c1ba239954279b95.ctex"
+uid="uid://bha1s8fjuhufd"
+path="res://.godot/imported/estoque_em_colapso.png-31d52876c966b7c377a4aa0601496d60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/quarto1.png"
-dest_files=["res://.godot/imported/quarto1.png-2c2f7c4e9ca85a35c1ba239954279b95.ctex"]
+source_file="res://sprites/menu/estoque_em_colapso.png"
+dest_files=["res://.godot/imported/estoque_em_colapso.png-31d52876c966b7c377a4aa0601496d60.ctex"]
 
 [params]
 

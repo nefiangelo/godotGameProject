@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dihjyjnud5bk7"
-path="res://.godot/imported/BUNECO.png-321ebd2270a2cc074fc32dd982ae4f22.ctex"
+uid="uid://bbysvsx5skd7i"
+path="res://.godot/imported/btn_ajuda_hover.png-65fa90267c2c33bd7cfbf4dd8376be53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BUNECO.png"
-dest_files=["res://.godot/imported/BUNECO.png-321ebd2270a2cc074fc32dd982ae4f22.ctex"]
+source_file="res://sprites/menu/btn_ajuda_hover.png"
+dest_files=["res://.godot/imported/btn_ajuda_hover.png-65fa90267c2c33bd7cfbf4dd8376be53.ctex"]
 
 [params]
 
