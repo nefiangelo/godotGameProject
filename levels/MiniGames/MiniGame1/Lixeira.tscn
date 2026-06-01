@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cbnf8olpejmt0"]
+
+[ext_resource type="Script" uid="uid://dibhmp5ve2y0i" path="res://scripts/ScriptsMiniGame1/lixeira.gd" id="1_x3l2a"]
+[ext_resource type="Texture2D" uid="uid://mviwlig3j5m2" path="res://sprites/MiniGame1/Lixeira.png" id="2_wuaaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh0k7"]
+size = Vector2(128, 80)
+
+[node name="Lixeira" type="Area2D" unique_id=921842447]
+script = ExtResource("1_x3l2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1297582137]
+scale = Vector2(0.3302752, 0.265928)
+texture = ExtResource("2_wuaaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=90506858]
+shape = SubResource("RectangleShape2D_uh0k7")

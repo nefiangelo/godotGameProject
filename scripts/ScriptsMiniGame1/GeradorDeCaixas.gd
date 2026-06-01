@@ -63,5 +63,5 @@ func coletar_caixa() -> void:
 	caixa_pronta_para_coleta = null
 	print("Caixa coletada sem física pesada!")
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	spawnar_caixa_na_esteira()

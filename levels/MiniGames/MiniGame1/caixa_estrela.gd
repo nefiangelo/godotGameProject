@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var forma_da_caixa: String = "circulo"
+@export var forma_da_caixa: String = "estrela"
 
 const VELOCIDADE_ESTEIRA = -120.0 # Velocidade limpa de movimento
 var na_esteira = true

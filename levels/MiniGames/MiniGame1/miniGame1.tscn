@@ -8,19 +8,24 @@
 [ext_resource type="PackedScene" uid="uid://cw6cma1wxhrt6" path="res://levels/MiniGames/MiniGame1/caixaEstrela.tscn" id="5_mgmxa"]
 [ext_resource type="Texture2D" uid="uid://dv24mff04ub04" path="res://sprites/MiniGame1/placa_empilhadeira.png" id="5_pkgwr"]
 [ext_resource type="Script" uid="uid://b30y5tax2k7y8" path="res://scripts/ScriptsMiniGame1/GeradorDeCaixas.gd" id="6_213gh"]
-[ext_resource type="PackedScene" uid="uid://dq3nd83n3ca60" path="res://levels/MiniGames/MiniGame1/caixaGenerica.tscn" id="7_tsngy"]
 [ext_resource type="PackedScene" uid="uid://bqthskgs28old" path="res://levels/MiniGames/MiniGame1/caixaQuadrado.tscn" id="7_wkugo"]
+[ext_resource type="PackedScene" uid="uid://cbnf8olpejmt0" path="res://levels/MiniGames/MiniGame1/Lixeira.tscn" id="7_wtxid"]
 [ext_resource type="PackedScene" uid="uid://678gbvfg7tfa" path="res://levels/MiniGames/MiniGame1/caixaTriangulo.tscn" id="8_70au6"]
 [ext_resource type="PackedScene" uid="uid://brhm4kxri33d4" path="res://levels/MiniGames/MiniGame1/slotPrateleira.tscn" id="8_fs4be"]
+[ext_resource type="Texture2D" uid="uid://cctboroee8dgd" path="res://sprites/MiniGame1/caixa alvo_2 1.png" id="9_5jwa2"]
+[ext_resource type="Texture2D" uid="uid://b45nfynhtjfkx" path="res://sprites/MiniGame1/caixa alvo_4 1.png" id="10_wtxid"]
+[ext_resource type="Texture2D" uid="uid://f5ux6quguovj" path="res://sprites/MiniGame1/slot_circulo.png" id="11_mixo2"]
+[ext_resource type="Script" uid="uid://crrrkwi8qoc45" path="res://levels/MiniGames/MiniGame1/GameManager.gd" id="12_65ijb"]
+[ext_resource type="Texture2D" uid="uid://h60f5ys4mchw" path="res://sprites/MiniGame1/slot_estrela.png" id="12_76ett"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
+size = Vector2(64, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk17p"]
 size = Vector2(26.272053, 18.648933)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujjem"]
 size = Vector2(3.4319139, 275.5188)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
-size = Vector2(64, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o4v5"]
 size = Vector2(248, 88)
@@ -41,11 +46,24 @@ position = Vector2(639, 357.75)
 scale = Vector2(0.6719078, 0.7602308)
 texture = ExtResource("1_8txt1")
 
+[node name="GeradorDeCaixas" type="Area2D" parent="." unique_id=697320556]
+position = Vector2(1008, 488)
+script = ExtResource("6_213gh")
+lista_de_caixas = Array[PackedScene]([ExtResource("8_70au6"), ExtResource("7_wkugo"), ExtResource("5_mgmxa"), ExtResource("4_65ijb")])
+posicao_spawn = Vector2(1300, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GeradorDeCaixas" unique_id=1339928724]
+position = Vector2(124, 30)
+shape = SubResource("RectangleShape2D_65ijb")
+
+[node name="Lixeira" parent="GeradorDeCaixas" unique_id=921842447 instance=ExtResource("7_wtxid")]
+position = Vector2(0, 40)
+
 [node name="esteira" type="StaticBody2D" parent="." unique_id=238122666]
 position = Vector2(1112, 554)
 
 [node name="Sprite2D" type="Sprite2D" parent="esteira" unique_id=1347949248]
-position = Vector2(27, -8)
+position = Vector2(160, -8)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_tsngy")
 
@@ -72,29 +90,206 @@ rotation = -1.5707964
 scale = Vector2(186.48491, 0.6741693)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=110927494]
-position = Vector2(1.0728836e-06, -63.97058)
+position = Vector2(9.536743e-07, 59.14392)
 shape = SubResource("RectangleShape2D_ujjem")
 
-[node name="GeradorDeCaixas" type="Area2D" parent="." unique_id=697320556]
-position = Vector2(1008, 488)
-script = ExtResource("6_213gh")
-lista_de_caixas = Array[PackedScene]([ExtResource("4_65ijb"), ExtResource("5_mgmxa"), ExtResource("7_tsngy"), ExtResource("7_wkugo"), ExtResource("8_70au6")])
-posicao_spawn = Vector2(1300, 480)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GeradorDeCaixas" unique_id=1339928724]
-position = Vector2(-8, 30)
-shape = SubResource("RectangleShape2D_65ijb")
-
-[node name="slotPrateleira" parent="." unique_id=1423070600 instance=ExtResource("8_fs4be")]
+[node name="slotPrateleira" parent="." unique_id=1423070600 groups=["Slots"] instance=ExtResource("8_fs4be")]
 position = Vector2(144, 200)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
 
-[node name="slotPrateleira2" parent="." unique_id=1136487044 instance=ExtResource("8_fs4be")]
-position = Vector2(144, 424)
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira" unique_id=1542382115]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
 
-[node name="slotPrateleira3" parent="." unique_id=1112258953 instance=ExtResource("8_fs4be")]
-position = Vector2(144, 312)
+[node name="slotPrateleira2" parent="." unique_id=891391387 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(144, 320)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira2" unique_id=1419713971]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira3" parent="." unique_id=1677960170 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(320, 432)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira3" unique_id=225423301]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira4" parent="." unique_id=1879779703 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(144, 432)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira4" unique_id=1748866557]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira5" parent="." unique_id=133390475 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(488, 432)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira5" unique_id=436507986]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira6" parent="." unique_id=638343070 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(320, 208)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira6" unique_id=367374597]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira7" parent="." unique_id=2107869489 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(320, 320)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira7" unique_id=1907087134]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira8" parent="." unique_id=1215455810 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(496, 208)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira8" unique_id=44282336]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira9" parent="." unique_id=182380081 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(496, 320)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira9" unique_id=1630219410]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira10" parent="." unique_id=1482413623 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(648, 208)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira10" unique_id=74113523]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira11" parent="." unique_id=1532227404 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(648, 424)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira11" unique_id=824353183]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira12" parent="." unique_id=863258367 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(656, 320)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira12" unique_id=431128043]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira16" parent="." unique_id=329631144 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(840, 432)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira16" unique_id=1150379988]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira17" parent="." unique_id=2006861981 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(832, 208)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira17" unique_id=1683058917]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
+
+[node name="slotPrateleira18" parent="." unique_id=443853592 groups=["Slots"] instance=ExtResource("8_fs4be")]
+position = Vector2(832, 320)
+arte_triangulo = ExtResource("9_5jwa2")
+arte_quadrado = ExtResource("10_wtxid")
+arte_circulo = ExtResource("11_mixo2")
+arte_estrela = ExtResource("12_76ett")
+
+[node name="SpriteSlot" type="Sprite2D" parent="slotPrateleira18" unique_id=1567830291]
+z_index = 2
+position = Vector2(0, 24)
+scale = Vector2(0.33333334, 0.3265306)
+texture = ExtResource("12_76ett")
 
 [node name="Empilhadeira" type="CharacterBody2D" parent="." unique_id=1912987145]
+z_index = 3
 position = Vector2(632, 463)
 script = ExtResource("3_fs4be")
 
@@ -118,6 +313,59 @@ scale = Vector2(0.9999999, 0.99999994)
 shape = SubResource("RectangleShape2D_wwmin")
 debug_color = Color(0, 0.6, 0.69803923, 0.42745098)
 
+[node name="GameManager" type="Node" parent="." unique_id=1236272923 node_paths=PackedStringArray("label_pontos", "label_tempo", "tela_final", "label_calculo_final")]
+script = ExtResource("12_65ijb")
+label_pontos = NodePath("../UI/HUD/Pontuação")
+label_tempo = NodePath("../UI/HUD/Tempo")
+tela_final = NodePath("../UI/EndScreen")
+label_calculo_final = NodePath("../UI/EndScreen/LabelCalculoFinal")
+
+[node name="Timer" type="Timer" parent="GameManager" unique_id=1404084029]
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1988128273]
+
+[node name="HUD" type="Control" parent="UI" unique_id=580016120]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pontuação" type="Label" parent="UI/HUD" unique_id=1278537814]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pontuação:"
+
+[node name="Tempo" type="Label" parent="UI/HUD" unique_id=116848227]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 58.0
+offset_bottom = 47.0
+text = "Tempo:"
+
+[node name="EndScreen" type="Control" parent="UI" unique_id=931011249]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UI/EndScreen" unique_id=1291776968]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/EndScreen" unique_id=433217722]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LabelCalculoFinal" type="Label" parent="UI/EndScreen" unique_id=1246673758]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="area_entered" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_entered"]
 [connection signal="area_exited" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_exited"]
 [connection signal="body_entered" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_body_entered"]
@@ -128,3 +376,28 @@ debug_color = Color(0, 0.6, 0.69803923, 0.42745098)
 [connection signal="area_exited" from="slotPrateleira2" to="slotPrateleira2" method="_on_area_exited"]
 [connection signal="area_entered" from="slotPrateleira3" to="slotPrateleira3" method="_on_area_entered"]
 [connection signal="area_exited" from="slotPrateleira3" to="slotPrateleira3" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira4" to="slotPrateleira4" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira4" to="slotPrateleira4" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira5" to="slotPrateleira5" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira5" to="slotPrateleira5" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira6" to="slotPrateleira6" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira6" to="slotPrateleira6" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira7" to="slotPrateleira7" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira7" to="slotPrateleira7" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira8" to="slotPrateleira8" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira8" to="slotPrateleira8" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira9" to="slotPrateleira9" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira9" to="slotPrateleira9" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira10" to="slotPrateleira10" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira10" to="slotPrateleira10" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira11" to="slotPrateleira11" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira11" to="slotPrateleira11" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira12" to="slotPrateleira12" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira12" to="slotPrateleira12" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira16" to="slotPrateleira16" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira16" to="slotPrateleira16" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira17" to="slotPrateleira17" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira17" to="slotPrateleira17" method="_on_area_exited"]
+[connection signal="area_entered" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_entered"]
+[connection signal="area_exited" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_exited"]
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://678gbvfg7tfa"]
 
-[ext_resource type="Script" uid="uid://c7yr2a7ucq1ty" path="res://scripts/ScriptsMiniGame1/caixa_generica.gd" id="1_2c40p"]
+[ext_resource type="Script" uid="uid://do3cj7u2nnceb" path="res://levels/MiniGames/MiniGame1/caixa_triangulo.gd" id="1_2c40p"]
 [ext_resource type="Texture2D" uid="uid://pdwilvv71kw7" path="res://sprites/MiniGame1/caixa_3 1.png" id="2_2c40p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uagl4"]
