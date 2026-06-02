@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://f5ux6quguovj" path="res://sprites/MiniGame1/slot_circulo.png" id="11_mixo2"]
 [ext_resource type="Script" uid="uid://crrrkwi8qoc45" path="res://levels/MiniGames/MiniGame1/GameManager.gd" id="12_65ijb"]
 [ext_resource type="Texture2D" uid="uid://h60f5ys4mchw" path="res://sprites/MiniGame1/slot_estrela.png" id="12_76ett"]
+[ext_resource type="Texture2D" uid="uid://cvpgfqpo561gk" path="res://sprites/menu/btn_voltar.png" id="18_mixo2"]
+[ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="19_76ett"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
 size = Vector2(64, 116)
@@ -33,8 +35,23 @@ size = Vector2(248, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwmin"]
 size = Vector2(184, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76ett"]
+bg_color = Color(0.003921569, 0.24705882, 0.53333336, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.6509804, 0.19215687, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.69411767)
+shadow_size = 10
+
 [node name="Node2D" type="Node2D" unique_id=1945731605]
-metadata/_edit_horizontal_guides_ = [488.0]
+metadata/_edit_horizontal_guides_ = [488.0, 360.0]
+metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=461760156]
 offset_right = 1280.0
@@ -94,7 +111,7 @@ position = Vector2(9.536743e-07, 59.14392)
 shape = SubResource("RectangleShape2D_ujjem")
 
 [node name="slotPrateleira" parent="." unique_id=1423070600 groups=["Slots"] instance=ExtResource("8_fs4be")]
-position = Vector2(144, 200)
+position = Vector2(144, 208)
 arte_triangulo = ExtResource("9_5jwa2")
 arte_quadrado = ExtResource("10_wtxid")
 arte_circulo = ExtResource("11_mixo2")
@@ -224,7 +241,7 @@ scale = Vector2(0.33333334, 0.3265306)
 texture = ExtResource("12_76ett")
 
 [node name="slotPrateleira11" parent="." unique_id=1532227404 groups=["Slots"] instance=ExtResource("8_fs4be")]
-position = Vector2(648, 424)
+position = Vector2(648, 432)
 arte_triangulo = ExtResource("9_5jwa2")
 arte_quadrado = ExtResource("10_wtxid")
 arte_circulo = ExtResource("11_mixo2")
@@ -318,12 +335,13 @@ script = ExtResource("12_65ijb")
 label_pontos = NodePath("../UI/HUD/Pontuação")
 label_tempo = NodePath("../UI/HUD/Tempo")
 tela_final = NodePath("../UI/EndScreen")
-label_calculo_final = NodePath("../UI/EndScreen/LabelCalculoFinal")
+label_calculo_final = NodePath("../UI/EndScreen/Panel/LabelCalculoFinal")
 
 [node name="Timer" type="Timer" parent="GameManager" unique_id=1404084029]
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1988128273]
+process_mode = 3
 
 [node name="HUD" type="Control" parent="UI" unique_id=580016120]
 layout_mode = 3
@@ -347,24 +365,65 @@ text = "Tempo:"
 [node name="EndScreen" type="Control" parent="UI" unique_id=931011249]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.18100001
+anchor_top = 0.2
+anchor_right = 0.81900007
+anchor_bottom = 0.78900003
+offset_left = -231.68001
+offset_top = -144.0
+offset_right = -1008.32007
+offset_bottom = -528.08
 
 [node name="Panel" type="Panel" parent="UI/EndScreen" unique_id=1291776968]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = 136.0
+offset_right = 1016.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_76ett")
 
-[node name="Label" type="Label" parent="UI/EndScreen" unique_id=433217722]
+[node name="Label" type="Label" parent="UI/EndScreen/Panel" unique_id=433217722]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 272.0
+offset_right = 561.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "RESULTADO"
 
-[node name="LabelCalculoFinal" type="Label" parent="UI/EndScreen" unique_id=1246673758]
+[node name="LabelCalculoFinal" type="RichTextLabel" parent="UI/EndScreen/Panel" unique_id=1249728325]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 208.0
+offset_top = 80.0
+offset_right = 624.0
+offset_bottom = 336.0
+bbcode_enabled = true
+
+[node name="BotaoVoltar" type="TextureButton" parent="UI/EndScreen/Panel" unique_id=1775163197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = 368.0
+offset_right = -344.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_mixo2")
+texture_hover = ExtResource("19_76ett")
+ignore_texture_size = true
+stretch_mode = 5
 
 [connection signal="area_entered" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_entered"]
 [connection signal="area_exited" from="GeradorDeCaixas" to="GeradorDeCaixas" method="_on_area_exited"]
@@ -401,3 +460,4 @@ offset_bottom = 23.0
 [connection signal="area_entered" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_entered"]
 [connection signal="area_exited" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_exited"]
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/EndScreen/Panel/BotaoVoltar" to="GameManager" method="_on_botao_voltar_pressed"]

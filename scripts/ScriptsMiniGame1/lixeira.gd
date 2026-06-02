@@ -26,7 +26,7 @@ func descartar_caixa() -> void:
 		var empilhadeira = pallete.get_parent()
 		
 		# Opcional: Avisa o GameManager se você quiser tirar pontos por desperdício
-		get_tree().call_group("Manager", "errar_caixa") 
+		# get_tree().call_group("Manager", "errar_caixa") 
 		
 		# Destrói a caixa e libera as mãos da empilhadeira
 		caixa_na_mira.queue_free()

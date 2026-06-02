@@ -1,7 +1,9 @@
 extends Node
 
 var pontuacao: int = 0
-var tempo_restante: int = 5
+var tempo_restante: int = 5 #TEMPO DO JOGO
+var slots_preenchidos: int = 0
+var total_de_slots: int = 0
 
 @export var label_pontos: Label
 @export var label_tempo: Label
@@ -9,6 +11,9 @@ var tempo_restante: int = 5
 func _ready() -> void:
 	add_to_group("Manager")
 	atualizar_ui()
+	
+	# Faz a contagem automática baseada no grupo "Slots" que criamos antes!
+	total_de_slots = get_tree().get_nodes_in_group("Slots").size()
 	
 	randomize() # Importante para embaralhar direito
 	distribuir_formas_balanceadas()
@@ -49,7 +54,12 @@ func _on_timer_timeout() -> void:
 
 func adicionar_ponto() -> void:
 	pontuacao += 10
+	slots_preenchidos += 1 # Adiciona +1 na contagem de caixas guardadas
 	atualizar_ui()
+	
+	# Verifica se já preencheu todas as prateleiras
+	if slots_preenchidos >= total_de_slots:
+		fim_de_jogo()
 
 func errar_caixa() -> void:
 	# Punição por errar (perde tempo ou perde ponto, você decide!)
@@ -60,9 +70,9 @@ func atualizar_ui() -> void:
 	if label_pontos: label_pontos.text = "Pontos: " + str(pontuacao)
 	if label_tempo: label_tempo.text = "Tempo: " + str(tempo_restante)
 
-# --- NOVAS EXPORTS PARA A TELA FINAL ---
+# --- EXPORTS DA TELA FINAL (Atualizado para RichTextLabel) ---
 @export var tela_final: Control
-@export var label_calculo_final: Label
+@export var label_calculo_final: RichTextLabel
 
 func fim_de_jogo() -> void:
 	$Timer.stop()
@@ -83,14 +93,18 @@ func fim_de_jogo() -> void:
 		
 	var pontuacao_total = pontuacao + bonus_tempo
 	
-	# 4. Montando o texto bonito para mostrar na tela
+	# 4. Montando o texto estilizado com BBCode (Cores, Tamanhos e Animação de Onda!)
 	if label_calculo_final:
 		label_calculo_final.text = (
-			"Caixas Organizadas: " + str(pontuacao / 10) + "\n" + # Assume que cada acerto deu 10 pontos
-			"Pontos por Caixas: " + str(pontuacao) + " pts\n" +
-			"Tempo Restante: " + str(tempo_restante) + "s\n" +
-			"Bônus de Velocidade: +" + str(bonus_tempo) + " pts\n\n" +
-			"PONTUAÇÃO TOTAL: " + str(pontuacao_total) + " PTS"
+			"[center]" +
+			"[color=gray]--------------------------------------------------[/color]\n\n" +
+			"Caixas Organizadas: [color=green][b]" + str(pontuacao / 10) + "[/b][/color]\n" +
+			"Pontos por Caixas: [color=yellow][b]" + str(pontuacao) + " pts[/b][/color]\n" +
+			"Tempo Restante: [color=aqua][b]" + str(tempo_restante) + "s[/b][/color]\n" +
+			"Bônus de Velocidade: [color=orange][b]+" + str(bonus_tempo) + " pts[/b][/color]\n\n" +
+			"[color=gray]--------------------------------------------------[/color]\n\n" +
+			"[wave amp=40 freq=4][font_size=26][b][color=gold]TOTAL: " + str(pontuacao_total) + " PTS[/color][/b][/font_size][/wave]" +
+			"[/center]"
 		)
 
 # Conecte o sinal 'pressed' do seu BotaoVoltar aqui!
@@ -99,4 +113,4 @@ func _on_botao_voltar_pressed() -> void:
 	get_tree().paused = false
 	
 	# Troque "res://menu_principal.tscn" pelo caminho exato da sua cena de seleção de minigames
-	get_tree().change_scene_to_file("res://menu_principal.tscn")
+	get_tree().change_scene_to_file("res://levels/Menu/gridGames.tscn")
