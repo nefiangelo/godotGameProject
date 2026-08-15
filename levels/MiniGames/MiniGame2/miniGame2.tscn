@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b0uvwrnau66ny"]
+
+[node name="Node2D" type="Node2D" unique_id=1945731605]
+metadata/_edit_horizontal_guides_ = [488.0, 360.0]
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=461760156]
+offset_right = 1280.0
+offset_bottom = 720.0

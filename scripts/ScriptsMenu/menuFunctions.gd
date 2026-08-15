@@ -14,3 +14,7 @@ func _on_sair_pressed() -> void:
 
 func _on_ajuda_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/Menu/ajuda.tscn")
+
+
+func _on_arcade_pressed() -> void:
+	print('Botão que vai iniciar os jogos um depois do outro')

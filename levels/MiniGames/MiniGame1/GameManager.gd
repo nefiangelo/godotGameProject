@@ -1,7 +1,7 @@
 extends Node
 
 var pontuacao: int = 0
-var tempo_restante: int = 5 #TEMPO DO JOGO
+var tempo_restante: int = 120 #TEMPO DO JOGO
 var slots_preenchidos: int = 0
 var total_de_slots: int = 0
 
