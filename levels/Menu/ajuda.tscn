@@ -1,27 +1,78 @@
 [gd_scene format=3 uid="uid://dxl11g16s7q76"]
 
 [ext_resource type="Script" uid="uid://cea88tcpou2u6" path="res://scripts/ScriptsMenu/telaAjuda.gd" id="1_5whu0"]
-[ext_resource type="Texture2D" uid="uid://cn5k8gv5vamc3" path="res://background/73aa9ca9-520a-45a8-a16d-bd654aa8831a.png" id="1_fjibv"]
+[ext_resource type="Texture2D" uid="uid://dt2e76rrrs08j" path="res://sprites/menu/background_menu.png" id="2_5whu0"]
+[ext_resource type="Texture2D" uid="uid://dg8e2agqfx3hs" path="res://sprites/menu/btn_sair.png" id="3_muqgd"]
+[ext_resource type="Texture2D" uid="uid://b806ktcl6igts" path="res://sprites/menu/img_Tutorial_2.png" id="3_uggfs"]
+[ext_resource type="Texture2D" uid="uid://cobk1u6hw1qec" path="res://sprites/menu/btn_sair_hover.png" id="4_dheak"]
+[ext_resource type="Texture2D" uid="uid://dtreh70mq642e" path="res://sprites/menu/btn_foward.png" id="4_muqgd"]
+[ext_resource type="Texture2D" uid="uid://rtbqgffsmdw1" path="res://sprites/menu/btnc_forward_hover.png" id="5_0hqrw"]
+[ext_resource type="Texture2D" uid="uid://bpl5ltrt5b7gv" path="res://sprites/menu/btn_backward.png" id="5_ugikd"]
+[ext_resource type="Texture2D" uid="uid://bpb5vgqby0ptx" path="res://sprites/menu/btnc_forward_disabled.png" id="6_dheak"]
+[ext_resource type="Texture2D" uid="uid://bnyngk6dgurqp" path="res://sprites/menu/img_Tutorial_1.png" id="6_ugikd"]
+[ext_resource type="Texture2D" uid="uid://dedoulw0dr6fg" path="res://sprites/menu/btn_backward_hover.png" id="8_uggfs"]
+[ext_resource type="Texture2D" uid="uid://deulsmtbye2m3" path="res://sprites/menu/btn_backward_disabled.png" id="9_fbwx0"]
 
 [node name="Ajuda" type="Control" unique_id=745166747]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5whu0")
+imagens_tutorial = Array[Texture2D]([ExtResource("3_uggfs"), ExtResource("6_ugikd")])
 metadata/_edit_vertical_guides_ = [640.0]
 metadata/_edit_horizontal_guides_ = [360.0]
 
-[node name="73Aa9Ca9520a45a8A16dBd654Aa8831a" type="Sprite2D" parent="." unique_id=981317578]
-position = Vector2(620, 344.00006)
-scale = Vector2(0.90104175, 0.7500001)
-texture = ExtResource("1_fjibv")
-
-[node name="voltar" type="Button" parent="." unique_id=71638545]
+[node name="BG" type="TextureRect" parent="." unique_id=1898361257]
 layout_mode = 0
-offset_left = 568.0
-offset_top = 576.0
-offset_right = 715.0
-offset_bottom = 626.0
-theme_override_font_sizes/font_size = 30
-text = "Voltar"
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_5whu0")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="voltar" type="TextureButton" parent="." unique_id=1252123252]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 608.0
+offset_right = 750.0
+offset_bottom = 665.0
+texture_normal = ExtResource("3_muqgd")
+texture_hover = ExtResource("4_dheak")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="ButtonProx" type="TextureButton" parent="." unique_id=1144684621]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 610.0
+offset_right = 817.0
+offset_bottom = 660.0
+texture_normal = ExtResource("4_muqgd")
+texture_hover = ExtResource("5_0hqrw")
+texture_disabled = ExtResource("6_dheak")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="ButtonAnterior" type="TextureButton" parent="." unique_id=1505632890]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 610.0
+offset_right = 521.0
+offset_bottom = 660.0
+texture_normal = ExtResource("5_ugikd")
+texture_hover = ExtResource("8_uggfs")
+texture_disabled = ExtResource("9_fbwx0")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="img_Tutorial_1" type="TextureRect" parent="." unique_id=2138180843]
+layout_mode = 0
+offset_left = 165.0
+offset_top = -12.0
+offset_right = 1135.0
+offset_bottom = 582.0
+expand_mode = 1
+stretch_mode = 6
 
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="ButtonProx" to="." method="_on_button_prox_pressed"]
+[connection signal="pressed" from="ButtonAnterior" to="." method="_on_button_anterior_pressed"]
