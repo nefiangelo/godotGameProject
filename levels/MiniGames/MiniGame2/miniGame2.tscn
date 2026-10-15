@@ -1,9 +1,89 @@
 [gd_scene format=3 uid="uid://b0uvwrnau66ny"]
 
+[ext_resource type="Script" uid="uid://c73lqh1vcmm2x" path="res://scripts/ScriptsMiniGame2/mini_game_2.gd" id="1_qdtem"]
+[ext_resource type="Texture2D" uid="uid://bgw0fev6nlwa4" path="res://sprites/MiniGame2/bancada.png" id="2_jp2ut"]
+[ext_resource type="PackedScene" uid="uid://cjmic8454tpby" path="res://sprites/MiniGame2/ItemUm.tscn" id="2_ubgkj"]
+[ext_resource type="PackedScene" uid="uid://clilrceot804n" path="res://sprites/MiniGame2/ItemUmQuebrado.tscn" id="3_5l3qx"]
+[ext_resource type="Texture2D" uid="uid://btyoonge02i6" path="res://sprites/MiniGame2/esteira_completa.png" id="3_ubgkj"]
+[ext_resource type="PackedScene" uid="uid://2pqmfrqq1e5" path="res://sprites/MiniGame2/ItemDois.tscn" id="4_bbnua"]
+[ext_resource type="Texture2D" uid="uid://ck5mw2m3f8hcm" path="res://sprites/MiniGame2/fornalha.png" id="4_ocjmr"]
+[ext_resource type="Texture2D" uid="uid://cesry6k2ie5dy" path="res://sprites/MiniGame2/mech.png" id="5_d8gyu"]
+[ext_resource type="PackedScene" uid="uid://dr8l12ohlvsvu" path="res://sprites/MiniGame2/ItemDoisQuebrado.tscn" id="5_ix2w3"]
+[ext_resource type="PackedScene" uid="uid://d2x00a0jymk6j" path="res://sprites/MiniGame2/ItemTres.tscn" id="6_ywf7d"]
+[ext_resource type="PackedScene" uid="uid://bnscp5ia3vnuk" path="res://sprites/MiniGame2/ItemQuatro.tscn" id="7_befc0"]
+[ext_resource type="PackedScene" uid="uid://bfy8kgkcy732" path="res://sprites/MiniGame2/ItemCinco.tscn" id="8_v52l1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(220, 393)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(260, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(182, 282)
+
 [node name="Node2D" type="Node2D" unique_id=1945731605]
+script = ExtResource("1_qdtem")
+itens_possiveis = Array[PackedScene]([ExtResource("2_ubgkj"), ExtResource("3_5l3qx"), ExtResource("4_bbnua"), ExtResource("5_ix2w3"), ExtResource("6_ywf7d"), ExtResource("7_befc0"), ExtResource("8_v52l1")])
 metadata/_edit_horizontal_guides_ = [488.0, 360.0]
 metadata/_edit_vertical_guides_ = [640.0]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=461760156]
+[node name="BG" type="ColorRect" parent="." unique_id=461760156]
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+
+[node name="Bancada" type="Sprite2D" parent="." unique_id=542797942]
+position = Vector2(110.999985, 392)
+scale = Vector2(0.61202186, 0.5)
+texture = ExtResource("2_jp2ut")
+
+[node name="Esteira" type="Sprite2D" parent="." unique_id=1993178406]
+position = Vector2(640, 366.5)
+scale = Vector2(0.65342605, 0.70429105)
+texture = ExtResource("3_ubgkj")
+
+[node name="Fornalha" type="Sprite2D" parent="." unique_id=243700277]
+position = Vector2(1152.5, 87)
+scale = Vector2(0.6045976, 0.5702875)
+texture = ExtResource("4_ocjmr")
+
+[node name="Mech" type="Sprite2D" parent="." unique_id=2106858187]
+position = Vector2(1153.9999, 487.99997)
+scale = Vector2(0.5869565, 0.60290825)
+texture = ExtResource("5_d8gyu")
+
+[node name="ZonaMesa" type="Area2D" parent="." unique_id=912826345 groups=["zona_drop"]]
+position = Vector2(99, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMesa" unique_id=1817208559]
+position = Vector2(3, 18.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="ZonaIncinerador" type="Area2D" parent="." unique_id=1087572185 groups=["zona_drop"]]
+position = Vector2(1155, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaIncinerador" unique_id=16863433]
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="ZonaMech" type="Area2D" parent="." unique_id=1883291886 groups=["zona_drop"]]
+position = Vector2(1155, 488)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMech" unique_id=13117946]
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="SpawnUm" type="Marker2D" parent="." unique_id=308421954]
+position = Vector2(445, -28)
+
+[node name="SpawnDois" type="Marker2D" parent="." unique_id=1128585568]
+position = Vector2(640, -28)
+
+[node name="SpawnTres" type="Marker2D" parent="." unique_id=29163846]
+position = Vector2(838, -28)
+
+[node name="Timer" type="Timer" parent="." unique_id=424941763]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

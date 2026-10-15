@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d2x00a0jymk6j"]
+
+[ext_resource type="PackedScene" uid="uid://cjmic8454tpby" path="res://sprites/MiniGame2/ItemUm.tscn" id="1_nsfpa"]
+[ext_resource type="Texture2D" uid="uid://dgfmj8yto2bpl" path="res://sprites/MiniGame2/ItemTres.png" id="2_2k8we"]
+
+[node name="ItemEsteira" unique_id=552013204 instance=ExtResource("1_nsfpa")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1018199218]
+texture = ExtResource("2_2k8we")

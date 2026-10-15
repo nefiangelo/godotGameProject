@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0s4ha64gaqme" path="res://sprites/menu/Neuro box logo 1.png" id="5_3mk27"]
 [ext_resource type="Texture2D" uid="uid://bha1s8fjuhufd" path="res://sprites/menu/estoque_em_colapso.png" id="5_efuxb"]
 [ext_resource type="Texture2D" uid="uid://bpl5ltrt5b7gv" path="res://sprites/menu/btn_backward.png" id="6_8wvnr"]
+[ext_resource type="Texture2D" uid="uid://c16bnovuedm0v" path="res://sprites/menu/Group 2.png" id="6_wstin"]
 [ext_resource type="Texture2D" uid="uid://dtreh70mq642e" path="res://sprites/menu/btn_foward.png" id="7_ffvse"]
 [ext_resource type="Texture2D" uid="uid://dedoulw0dr6fg" path="res://sprites/menu/btn_backward_hover.png" id="7_jm8iq"]
 [ext_resource type="Texture2D" uid="uid://deulsmtbye2m3" path="res://sprites/menu/btn_backward_disabled.png" id="8_efuxb"]
@@ -17,6 +18,7 @@
 
 [node name="gridGames" type="Control" unique_id=17477785]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1280.0
@@ -94,6 +96,45 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.7176471)
 theme_override_font_sizes/font_size = 22
 text = "Organize o estoque o mais rápido que conseguir!"
 
+[node name="BlockMiniGame2" type="MarginContainer" parent="gridMinigames/listaMinigames" unique_id=535915615]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="gridMinigames/listaMinigames/BlockMiniGame2" unique_id=1969042079]
+layout_mode = 2
+
+[node name="StylesItems" type="HBoxContainer" parent="gridMinigames/listaMinigames/BlockMiniGame2" unique_id=1845206356]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="gridMinigames/listaMinigames/BlockMiniGame2/StylesItems" unique_id=1209333083]
+custom_minimum_size = Vector2(180, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_wstin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Texts" type="VBoxContainer" parent="gridMinigames/listaMinigames/BlockMiniGame2/StylesItems" unique_id=1698538508]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TituloMinigame" type="Label" parent="gridMinigames/listaMinigames/BlockMiniGame2/StylesItems/Texts" unique_id=1616422198]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9490196)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+text = "LINHA DE PRODUÇÃO"
+
+[node name="SubTituloMiniGame" type="Label" parent="gridMinigames/listaMinigames/BlockMiniGame2/StylesItems/Texts" unique_id=1231037138]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.7176471)
+theme_override_font_sizes/font_size = 22
+text = "Avalie e separe enquanto a esteira acelera!"
+
 [node name="navButtons" type="HBoxContainer" parent="gridMinigames" unique_id=1577808397]
 layout_mode = 0
 offset_left = 303.0
@@ -132,6 +173,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="gridMinigames/navButtons/BtnAnterior" to="gridMinigames" method="_on_btn_anterior_pressed"]
 [connection signal="pressed" from="gridMinigames/navButtons/BtnProximo" to="gridMinigames" method="_on_btn_proximo_pressed"]
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]

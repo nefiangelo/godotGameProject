@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://clilrceot804n"]
+
+[ext_resource type="PackedScene" uid="uid://cjmic8454tpby" path="res://sprites/MiniGame2/ItemUm.tscn" id="1_4a1sh"]
+[ext_resource type="Texture2D" uid="uid://bdmtkntkjgr70" path="res://sprites/MiniGame2/ItemUmQuebrado.png" id="2_c4cts"]
+
+[node name="ItemEsteira" unique_id=552013204 instance=ExtResource("1_4a1sh")]
+tipo_do_item = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=1018199218]
+scale = Vector2(0.8695652, 0.8159204)
+texture = ExtResource("2_c4cts")
