@@ -5,7 +5,11 @@
 
 [node name="ItemEsteira" unique_id=552013204 instance=ExtResource("1_4a1sh")]
 tipo_do_item = 1
+id_conserto = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=1018199218]
 scale = Vector2(0.8695652, 0.8159204)
 texture = ExtResource("2_c4cts")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

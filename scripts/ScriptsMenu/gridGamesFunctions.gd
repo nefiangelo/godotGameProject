@@ -5,5 +5,9 @@ func _on_voltar_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/Menu/menuPrincipal.tscn")
 
 #BOTÃO MINIGAME 1
-func _on_button_pressed() -> void:
+func _on_button_minigame_1_pressed() -> void:
+	get_tree().change_scene_to_file("res://levels/MiniGames/MiniGame1/miniGame1.tscn")
+	
+#BOTÃO MINIGAME 1
+func _on_button_minigame_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/MiniGames/MiniGame2/miniGame2.tscn")

@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://d2x00a0jymk6j" path="res://sprites/MiniGame2/ItemTres.tscn" id="6_ywf7d"]
 [ext_resource type="PackedScene" uid="uid://bnscp5ia3vnuk" path="res://sprites/MiniGame2/ItemQuatro.tscn" id="7_befc0"]
 [ext_resource type="PackedScene" uid="uid://bfy8kgkcy732" path="res://sprites/MiniGame2/ItemCinco.tscn" id="8_v52l1"]
+[ext_resource type="Texture2D" uid="uid://bdmtkntkjgr70" path="res://sprites/MiniGame2/ItemUmQuebrado.png" id="13_befc0"]
+[ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="13_ix2w3"]
+[ext_resource type="Texture2D" uid="uid://bcbyeupevwjna" path="res://sprites/MiniGame2/ItemDoisQuebrado.png" id="14_v52l1"]
+[ext_resource type="PackedScene" uid="uid://dnaqlxdagv1dc" path="res://levels/Menu/MenuPause.tscn" id="14_ywf7d"]
+[ext_resource type="Texture2D" uid="uid://b806ktcl6igts" path="res://sprites/menu/img_Tutorial_2.png" id="15_ywf7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(220, 393)
@@ -21,6 +26,12 @@ size = Vector2(260, 196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
 size = Vector2(182, 282)
+
+[sub_resource type="InputEventAction" id="InputEventAction_yf5fn"]
+action = &"botao_pause"
+
+[sub_resource type="Shortcut" id="Shortcut_g4v7s"]
+events = [SubResource("InputEventAction_yf5fn")]
 
 [node name="Node2D" type="Node2D" unique_id=1945731605]
 script = ExtResource("1_qdtem")
@@ -86,4 +97,82 @@ position = Vector2(838, -28)
 wait_time = 2.0
 autostart = true
 
+[node name="HUD" type="Label" parent="." unique_id=1638223854]
+offset_left = 17.0
+offset_top = 5.0
+offset_right = 186.0
+offset_bottom = 158.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD" unique_id=869291282]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 145.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PanelContainer" unique_id=1709617356]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TituloHUD" type="Label" parent="HUD/PanelContainer/VBoxContainer" unique_id=1628622447]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Conserte os Itens:"
+
+[node name="LinhaItem1" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" unique_id=1560056160]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ItemQuebrado1" type="TextureRect" parent="HUD/PanelContainer/VBoxContainer/LinhaItem1" unique_id=1053882416]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("13_befc0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QtdItem1" type="Label" parent="HUD/PanelContainer/VBoxContainer/LinhaItem1" unique_id=1274940716]
+layout_mode = 2
+text = "0"
+
+[node name="LinhaItem2" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" unique_id=1217980515]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ItemQuebrado2" type="TextureRect" parent="HUD/PanelContainer/VBoxContainer/LinhaItem2" unique_id=1499088917]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("14_v52l1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QtdItem2" type="Label" parent="HUD/PanelContainer/VBoxContainer/LinhaItem2" unique_id=310151637]
+layout_mode = 2
+text = "0"
+
+[node name="PauseButton" type="TextureButton" parent="HUD/PanelContainer/VBoxContainer" unique_id=1014440043]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+shortcut = SubResource("Shortcut_g4v7s")
+texture_normal = ExtResource("13_ix2w3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="FundoTempo" type="PanelContainer" parent="HUD" unique_id=245782405]
+layout_mode = 0
+offset_left = 171.0
+offset_right = 211.0
+offset_bottom = 40.0
+
+[node name="TempoTexto" type="Label" parent="HUD/FundoTempo" unique_id=685450211]
+layout_mode = 2
+
+[node name="TelaPause" parent="." unique_id=1778987312 instance=ExtResource("14_ywf7d")]
+visible = false
+imagem_tutorial = ExtResource("15_ywf7d")
+
+[node name="TimerJogo" type="Timer" parent="." unique_id=1915232445]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="TimerJogo" to="." method="_on_timer_jogo_timeout"]

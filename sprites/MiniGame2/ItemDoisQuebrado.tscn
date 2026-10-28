@@ -5,6 +5,7 @@
 
 [node name="ItemEsteira" unique_id=552013204 instance=ExtResource("1_x65q7")]
 tipo_do_item = 1
+id_conserto = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=1018199218]
 texture = ExtResource("2_rptus")
