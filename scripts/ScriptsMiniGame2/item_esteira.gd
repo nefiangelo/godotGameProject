@@ -18,7 +18,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			Input.set_default_cursor_shape(Input.CURSOR_DRAG)
 		else:
 			arrastando = false
-			# Volta para a mãozinha apontando ao soltar (pois o mouse continua em cima do item)
+			# Volta para a mãozinha apontando ao soltar
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 			verificar_drop()
 
@@ -27,7 +27,11 @@ func _process(delta: float) -> void:
 		global_position = get_global_mouse_position() + offset_mouse
 	else:
 		if zona_atual == null or zona_atual.name != "ZonaMesa":
-			global_position.y += velocidade_descida * delta
+			# 1. Pega a velocidade atualizada direto do script principal
+			var velocidade_atual = get_parent().velocidade_esteira
+			
+			# 2. Aplica na descida do item
+			global_position.y += velocidade_atual * delta
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("zona_drop"):
@@ -37,9 +41,10 @@ func _on_area_exited(area: Area2D) -> void:
 	if area == zona_atual:
 		zona_atual = null
 
+# ---- A LÓGICA DO JOGO CORRIGIDA ----
 func verificar_drop() -> void:
 	if zona_atual == null:
-		# Se soltou no vazio e ele vai continuar caindo, tira a mãozinha
+		# Se soltou no vazio, tira a mãozinha e deixa continuar caindo
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		return 
 		
@@ -52,29 +57,33 @@ func verificar_drop() -> void:
 	elif tipo_do_item == Categoria.LIXO and zona_atual.name == "ZonaIncinerador":
 		acertou = true
 		
-	# COMUNICAÇÃO COM O MINIGAME (Com Prints para Debug)
-	if acertou and tipo_do_item == Categoria.DEFEITUOSO:
-		print("1. O item bateu na zona certa! Meu ID é: ", id_conserto)
-		
-		if get_parent().has_method("consertou_item"):
-			print("2. Achei a função no Minigame! Enviando aviso...")
-			get_parent().consertou_item(id_conserto)
-		else:
-			print("ERRO: O nó pai não tem a função consertou_item!")
-			
+	# COMUNICAÇÃO COM O MECÂNICO
+	if acertou and tipo_do_item == Categoria.DEFEITUOSO and zona_atual.name == "ZonaMech":
+		if zona_atual.has_method("receber_item"):
+			var aceitou = zona_atual.receber_item(id_conserto)
+
+			if not aceitou:
+				# Mecânico ocupado: o item "solta", ignora a zona e continua caindo
+				zona_atual = null
+				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+				return
+
+		# Se aceitou, some daqui (o Timer do script ZonaMech pontuará em 3s)
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		queue_free()
+		return
+
+	# MESA E OUTRAS ZONAS
 	if zona_atual.name == "ZonaMesa":
 		return
 		
-	# ATENÇÃO AQUI: Como o item vai ser deletado, forçamos o mouse a voltar ao normal!
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	queue_free()
 
 func _on_mouse_entered() -> void:
-	# Quando o mouse entra na imagem, vira a mão de clique
 	if not arrastando:
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_mouse_exited() -> void:
-	# Quando o mouse sai da imagem, volta a ser a setinha
 	if not arrastando:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)

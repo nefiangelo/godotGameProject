@@ -13,10 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://bnscp5ia3vnuk" path="res://sprites/MiniGame2/ItemQuatro.tscn" id="7_befc0"]
 [ext_resource type="PackedScene" uid="uid://bfy8kgkcy732" path="res://sprites/MiniGame2/ItemCinco.tscn" id="8_v52l1"]
 [ext_resource type="Texture2D" uid="uid://bdmtkntkjgr70" path="res://sprites/MiniGame2/ItemUmQuebrado.png" id="13_befc0"]
+[ext_resource type="Script" uid="uid://bf0pibhtexcyh" path="res://scripts/ScriptsMiniGame2/zona_mech.gd" id="13_frieo"]
 [ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="13_ix2w3"]
 [ext_resource type="Texture2D" uid="uid://bcbyeupevwjna" path="res://sprites/MiniGame2/ItemDoisQuebrado.png" id="14_v52l1"]
 [ext_resource type="PackedScene" uid="uid://dnaqlxdagv1dc" path="res://levels/Menu/MenuPause.tscn" id="14_ywf7d"]
 [ext_resource type="Texture2D" uid="uid://b806ktcl6igts" path="res://sprites/menu/img_Tutorial_2.png" id="15_ywf7d"]
+[ext_resource type="Texture2D" uid="uid://dhx8s023erxhs" path="res://sprites/MiniGame2/esteiras_free.png" id="19_gfv7u"]
+[ext_resource type="Script" uid="uid://cim7tojmw32dm" path="res://scripts/ScriptsMiniGame2/parallax_background.gd" id="20_lfx7b"]
+[ext_resource type="Script" uid="uid://et11eb501lb8" path="res://scripts/ScriptsMiniGame2/tela_final.gd" id="21_lfx7b"]
+[ext_resource type="Script" uid="uid://c12d1hyue3hwc" path="res://scripts/ScriptsMiniGame2/game_manager.gd" id="22_i6fjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(220, 393)
@@ -35,35 +40,66 @@ events = [SubResource("InputEventAction_yf5fn")]
 
 [node name="Node2D" type="Node2D" unique_id=1945731605]
 script = ExtResource("1_qdtem")
-itens_possiveis = Array[PackedScene]([ExtResource("2_ubgkj"), ExtResource("3_5l3qx"), ExtResource("4_bbnua"), ExtResource("5_ix2w3"), ExtResource("6_ywf7d"), ExtResource("7_befc0"), ExtResource("8_v52l1")])
+itens_possiveis = Array[PackedScene]([ExtResource("2_ubgkj"), ExtResource("3_5l3qx"), ExtResource("5_ix2w3"), ExtResource("4_bbnua"), ExtResource("6_ywf7d"), ExtResource("7_befc0"), ExtResource("8_v52l1")])
 metadata/_edit_horizontal_guides_ = [488.0, 360.0]
 metadata/_edit_vertical_guides_ = [640.0]
 
-[node name="BG" type="ColorRect" parent="." unique_id=461760156]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=500247767]
+layer = -1
+script = ExtResource("20_lfx7b")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1419380070]
+motion_mirroring = Vector2(0, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1226707121]
+position = Vector2(449.5, 375.5)
+scale = Vector2(0.6238937, 0.6867469)
+texture = ExtResource("19_gfv7u")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=811287443]
+motion_mirroring = Vector2(0, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=2130728954]
+position = Vector2(645, 354.74997)
+scale = Vector2(0.6238937, 0.67701566)
+texture = ExtResource("19_gfv7u")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=445687884]
+motion_mirroring = Vector2(0, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1552451598]
+position = Vector2(838, 371)
+scale = Vector2(0.6238937, 0.69555146)
+texture = ExtResource("19_gfv7u")
+
+[node name="FundoAbsoluto" type="CanvasLayer" parent="." unique_id=2058385990]
+layer = -2
+
+[node name="BG" type="ColorRect" parent="FundoAbsoluto" unique_id=461760156]
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0.78352344, 0.7835234, 0.7835234, 1)
 
-[node name="Bancada" type="Sprite2D" parent="." unique_id=542797942]
+[node name="Bancada" type="Sprite2D" parent="FundoAbsoluto" unique_id=542797942]
 position = Vector2(110.999985, 392)
 scale = Vector2(0.61202186, 0.5)
 texture = ExtResource("2_jp2ut")
 
-[node name="Esteira" type="Sprite2D" parent="." unique_id=1993178406]
-position = Vector2(640, 366.5)
-scale = Vector2(0.65342605, 0.70429105)
-texture = ExtResource("3_ubgkj")
-
-[node name="Fornalha" type="Sprite2D" parent="." unique_id=243700277]
+[node name="Fornalha" type="Sprite2D" parent="FundoAbsoluto" unique_id=243700277]
 position = Vector2(1152.5, 87)
 scale = Vector2(0.6045976, 0.5702875)
 texture = ExtResource("4_ocjmr")
 
-[node name="Mech" type="Sprite2D" parent="." unique_id=2106858187]
+[node name="Mech" type="Sprite2D" parent="FundoAbsoluto" unique_id=2106858187]
 position = Vector2(1153.9999, 487.99997)
 scale = Vector2(0.5869565, 0.60290825)
 texture = ExtResource("5_d8gyu")
+
+[node name="Esteira" type="Sprite2D" parent="FundoAbsoluto" unique_id=1993178406]
+position = Vector2(640, 359.99997)
+scale = Vector2(0.65342605, 0.6716417)
+texture = ExtResource("3_ubgkj")
 
 [node name="ZonaMesa" type="Area2D" parent="." unique_id=912826345 groups=["zona_drop"]]
 position = Vector2(99, 360)
@@ -80,9 +116,20 @@ shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="ZonaMech" type="Area2D" parent="." unique_id=1883291886 groups=["zona_drop"]]
 position = Vector2(1155, 488)
+script = ExtResource("13_frieo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMech" unique_id=13117946]
 shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="ProgressBar" type="ProgressBar" parent="ZonaMech" unique_id=359033053]
+offset_left = -75.0
+offset_top = -173.0
+offset_right = 73.0
+offset_bottom = -146.0
+show_percentage = false
+
+[node name="TimerConserto" type="Timer" parent="ZonaMech" unique_id=1650849011]
+wait_time = 3.5
 
 [node name="SpawnUm" type="Marker2D" parent="." unique_id=308421954]
 position = Vector2(445, -28)
@@ -169,10 +216,48 @@ visible = false
 imagem_tutorial = ExtResource("15_ywf7d")
 
 [node name="TimerJogo" type="Timer" parent="." unique_id=1915232445]
-wait_time = 60.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 
+[node name="TelaFinal" type="CanvasLayer" parent="." unique_id=583258153]
+process_mode = 3
+visible = false
+script = ExtResource("21_lfx7b")
+
+[node name="ColorRect" type="ColorRect" parent="TelaFinal" unique_id=178803026]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7058824)
+
+[node name="PanelContainer" type="PanelContainer" parent="TelaFinal" unique_id=1582594240]
+offset_left = 379.0
+offset_top = 150.0
+offset_right = 909.0
+offset_bottom = 584.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TelaFinal/PanelContainer" unique_id=1863315614]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Titulo" type="Label" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=1212707506]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=562791445]
+layout_mode = 2
+
+[node name="BotaoMenu" type="Button" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=80802124]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+
+[node name="GameManager" type="Node" parent="." unique_id=570467868]
+script = ExtResource("22_i6fjw")
+
+[connection signal="timeout" from="ZonaMech/TimerConserto" to="ZonaMech" method="_on_timer_conserto_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="TimerJogo" to="." method="_on_timer_jogo_timeout"]

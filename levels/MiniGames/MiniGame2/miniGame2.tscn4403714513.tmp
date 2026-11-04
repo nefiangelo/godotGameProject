@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://b0uvwrnau66ny"]
+
+[ext_resource type="Script" uid="uid://c73lqh1vcmm2x" path="res://scripts/ScriptsMiniGame2/mini_game_2.gd" id="1_qdtem"]
+[ext_resource type="Texture2D" uid="uid://bgw0fev6nlwa4" path="res://sprites/MiniGame2/bancada.png" id="2_jp2ut"]
+[ext_resource type="PackedScene" uid="uid://cjmic8454tpby" path="res://sprites/MiniGame2/ItemUm.tscn" id="2_ubgkj"]
+[ext_resource type="PackedScene" uid="uid://clilrceot804n" path="res://sprites/MiniGame2/ItemUmQuebrado.tscn" id="3_5l3qx"]
+[ext_resource type="Texture2D" uid="uid://btyoonge02i6" path="res://sprites/MiniGame2/esteira_completa.png" id="3_ubgkj"]
+[ext_resource type="PackedScene" uid="uid://2pqmfrqq1e5" path="res://sprites/MiniGame2/ItemDois.tscn" id="4_bbnua"]
+[ext_resource type="Texture2D" uid="uid://ck5mw2m3f8hcm" path="res://sprites/MiniGame2/fornalha.png" id="4_ocjmr"]
+[ext_resource type="Texture2D" uid="uid://cesry6k2ie5dy" path="res://sprites/MiniGame2/mech.png" id="5_d8gyu"]
+[ext_resource type="PackedScene" uid="uid://dr8l12ohlvsvu" path="res://sprites/MiniGame2/ItemDoisQuebrado.tscn" id="5_ix2w3"]
+[ext_resource type="PackedScene" uid="uid://d2x00a0jymk6j" path="res://sprites/MiniGame2/ItemTres.tscn" id="6_ywf7d"]
+[ext_resource type="PackedScene" uid="uid://bnscp5ia3vnuk" path="res://sprites/MiniGame2/ItemQuatro.tscn" id="7_befc0"]
+[ext_resource type="PackedScene" uid="uid://bfy8kgkcy732" path="res://sprites/MiniGame2/ItemCinco.tscn" id="8_v52l1"]
+[ext_resource type="Texture2D" uid="uid://bdmtkntkjgr70" path="res://sprites/MiniGame2/ItemUmQuebrado.png" id="13_befc0"]
+[ext_resource type="Script" uid="uid://bf0pibhtexcyh" path="res://scripts/ScriptsMiniGame2/zona_mech.gd" id="13_frieo"]
+[ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="13_ix2w3"]
+[ext_resource type="Texture2D" uid="uid://bcbyeupevwjna" path="res://sprites/MiniGame2/ItemDoisQuebrado.png" id="14_v52l1"]
+[ext_resource type="PackedScene" uid="uid://dnaqlxdagv1dc" path="res://levels/Menu/MenuPause.tscn" id="14_ywf7d"]
+[ext_resource type="Texture2D" uid="uid://b806ktcl6igts" path="res://sprites/menu/img_Tutorial_2.png" id="15_ywf7d"]
+[ext_resource type="Texture2D" uid="uid://dhx8s023erxhs" path="res://sprites/MiniGame2/esteiras_free.png" id="19_gfv7u"]
+[ext_resource type="Script" uid="uid://cim7tojmw32dm" path="res://scripts/ScriptsMiniGame2/parallax_background.gd" id="20_lfx7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(220, 393)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(260, 196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(182, 282)
+
+[sub_resource type="InputEventAction" id="InputEventAction_yf5fn"]
+action = &"botao_pause"
+
+[sub_resource type="Shortcut" id="Shortcut_g4v7s"]
+events = [SubResource("InputEventAction_yf5fn")]
+
+[node name="Node2D" type="Node2D" unique_id=1945731605]
+script = ExtResource("1_qdtem")
+itens_possiveis = Array[PackedScene]([ExtResource("2_ubgkj"), ExtResource("3_5l3qx"), ExtResource("4_bbnua"), ExtResource("5_ix2w3"), ExtResource("6_ywf7d"), ExtResource("7_befc0"), ExtResource("8_v52l1")])
+metadata/_edit_horizontal_guides_ = [488.0, 360.0]
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="BG" type="ColorRect" parent="." unique_id=461760156]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+
+[node name="Bancada" type="Sprite2D" parent="." unique_id=542797942]
+position = Vector2(110.999985, 392)
+scale = Vector2(0.61202186, 0.5)
+texture = ExtResource("2_jp2ut")
+
+[node name="Fornalha" type="Sprite2D" parent="." unique_id=243700277]
+position = Vector2(1152.5, 87)
+scale = Vector2(0.6045976, 0.5702875)
+texture = ExtResource("4_ocjmr")
+
+[node name="Mech" type="Sprite2D" parent="." unique_id=2106858187]
+position = Vector2(1153.9999, 487.99997)
+scale = Vector2(0.5869565, 0.60290825)
+texture = ExtResource("5_d8gyu")
+
+[node name="ZonaMesa" type="Area2D" parent="." unique_id=912826345 groups=["zona_drop"]]
+position = Vector2(99, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMesa" unique_id=1817208559]
+position = Vector2(3, 18.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="ZonaIncinerador" type="Area2D" parent="." unique_id=1087572185 groups=["zona_drop"]]
+position = Vector2(1155, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaIncinerador" unique_id=16863433]
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="ZonaMech" type="Area2D" parent="." unique_id=1883291886 groups=["zona_drop"]]
+position = Vector2(1155, 488)
+script = ExtResource("13_frieo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaMech" unique_id=13117946]
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="ProgressBar" type="ProgressBar" parent="ZonaMech" unique_id=359033053]
+offset_left = -75.0
+offset_top = -173.0
+offset_right = 73.0
+offset_bottom = -146.0
+show_percentage = false
+
+[node name="TimerConserto" type="Timer" parent="ZonaMech" unique_id=1650849011]
+wait_time = 3.5
+
+[node name="SpawnUm" type="Marker2D" parent="." unique_id=308421954]
+position = Vector2(445, -28)
+
+[node name="SpawnDois" type="Marker2D" parent="." unique_id=1128585568]
+position = Vector2(640, -28)
+
+[node name="SpawnTres" type="Marker2D" parent="." unique_id=29163846]
+position = Vector2(838, -28)
+
+[node name="Timer" type="Timer" parent="." unique_id=424941763]
+wait_time = 2.0
+autostart = true
+
+[node name="HUD" type="Label" parent="." unique_id=1638223854]
+offset_left = 17.0
+offset_top = 5.0
+offset_right = 186.0
+offset_bottom = 158.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD" unique_id=869291282]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 145.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PanelContainer" unique_id=1709617356]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TituloHUD" type="Label" parent="HUD/PanelContainer/VBoxContainer" unique_id=1628622447]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Conserte os Itens:"
+
+[node name="LinhaItem1" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" unique_id=1560056160]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ItemQuebrado1" type="TextureRect" parent="HUD/PanelContainer/VBoxContainer/LinhaItem1" unique_id=1053882416]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("13_befc0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QtdItem1" type="Label" parent="HUD/PanelContainer/VBoxContainer/LinhaItem1" unique_id=1274940716]
+layout_mode = 2
+text = "0"
+
+[node name="LinhaItem2" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" unique_id=1217980515]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ItemQuebrado2" type="TextureRect" parent="HUD/PanelContainer/VBoxContainer/LinhaItem2" unique_id=1499088917]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("14_v52l1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="QtdItem2" type="Label" parent="HUD/PanelContainer/VBoxContainer/LinhaItem2" unique_id=310151637]
+layout_mode = 2
+text = "0"
+
+[node name="PauseButton" type="TextureButton" parent="HUD/PanelContainer/VBoxContainer" unique_id=1014440043]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+shortcut = SubResource("Shortcut_g4v7s")
+texture_normal = ExtResource("13_ix2w3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="FundoTempo" type="PanelContainer" parent="HUD" unique_id=245782405]
+layout_mode = 0
+offset_left = 171.0
+offset_right = 211.0
+offset_bottom = 40.0
+
+[node name="TempoTexto" type="Label" parent="HUD/FundoTempo" unique_id=685450211]
+layout_mode = 2
+
+[node name="TelaPause" parent="." unique_id=1778987312 instance=ExtResource("14_ywf7d")]
+visible = false
+imagem_tutorial = ExtResource("15_ywf7d")
+
+[node name="TimerJogo" type="Timer" parent="." unique_id=1915232445]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="EsteirasFree" type="Sprite2D" parent="." unique_id=2119624895]
+visible = false
+texture_repeat = 2
+position = Vector2(448, 370.99997)
+scale = Vector2(0.67256635, 0.69138086)
+texture = ExtResource("19_gfv7u")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=545113572]
+layer = 0
+script = ExtResource("20_lfx7b")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=764798682]
+motion_mirroring = Vector2(0, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1208751565]
+position = Vector2(372, -2)
+scale = Vector2(0.6725665, 0.69138086)
+texture = ExtResource("19_gfv7u")
+centered = false
+
+[node name="Esteira" type="Sprite2D" parent="." unique_id=1993178406]
+z_index = 1
+position = Vector2(640, 366.5)
+scale = Vector2(0.65342605, 0.70429105)
+texture = ExtResource("3_ubgkj")
+
+[connection signal="timeout" from="ZonaMech/TimerConserto" to="ZonaMech" method="_on_timer_conserto_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="TimerJogo" to="." method="_on_timer_jogo_timeout"]

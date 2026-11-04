@@ -135,7 +135,7 @@ text = "LINHA DE PRODUÇÃO"
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.7176471)
 theme_override_font_sizes/font_size = 22
-text = "Avalie e separe enquanto a esteira acelera!"
+text = "Conserte enquanto a esteira acelera!"
 
 [node name="navButtons" type="HBoxContainer" parent="gridMinigames" unique_id=1577808397]
 layout_mode = 0
