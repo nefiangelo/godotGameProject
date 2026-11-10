@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bm6o30rkotdiv"]
 
 [ext_resource type="Texture2D" uid="uid://b36xa777om1pd" path="res://sprites/MiniGame1/background.png" id="1_8txt1"]
+[ext_resource type="Script" uid="uid://bji1efd7vee3j" path="res://scripts/ScriptsMiniGame1/mini_game_1.gd" id="1_myy66"]
 [ext_resource type="Texture2D" uid="uid://rpka4flo0k5v" path="res://sprites/MiniGame1/esteira 1.png" id="2_tsngy"]
+[ext_resource type="Texture2D" uid="uid://bnyngk6dgurqp" path="res://sprites/menu/img_Tutorial_1.png" id="3_fava6"]
 [ext_resource type="Script" uid="uid://l1lph4jv6hs0" path="res://scripts/ScriptsMiniGame1/empilhadeira.gd" id="3_fs4be"]
 [ext_resource type="Texture2D" uid="uid://obuwktnyk62s" path="res://sprites/MiniGame1/empilhadeira 1.png" id="4_6e3qb"]
 [ext_resource type="PackedScene" uid="uid://430m07x6lcv4" path="res://levels/MiniGames/MiniGame1/caixaCirculo.tscn" id="4_65ijb"]
@@ -18,7 +20,10 @@
 [ext_resource type="Script" uid="uid://crrrkwi8qoc45" path="res://levels/MiniGames/MiniGame1/GameManager.gd" id="12_65ijb"]
 [ext_resource type="Texture2D" uid="uid://h60f5ys4mchw" path="res://sprites/MiniGame1/slot_estrela.png" id="12_76ett"]
 [ext_resource type="Texture2D" uid="uid://cvpgfqpo561gk" path="res://sprites/menu/btn_voltar.png" id="18_mixo2"]
+[ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="19_7alqm"]
 [ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="19_76ett"]
+[ext_resource type="Texture2D" uid="uid://bbysvsx5skd7i" path="res://sprites/menu/btn_ajuda_hover.png" id="20_7alqm"]
+[ext_resource type="PackedScene" uid="uid://dnaqlxdagv1dc" path="res://levels/Menu/MenuPause.tscn" id="23_fava6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
 size = Vector2(64, 116)
@@ -35,6 +40,14 @@ size = Vector2(248, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwmin"]
 size = Vector2(184, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_w8b6u"]
+action = &"botao_pause"
+
+[sub_resource type="Shortcut" id="Shortcut_qeibb"]
+events = [SubResource("InputEventAction_w8b6u")]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76ett"]
 bg_color = Color(0.003921569, 0.24705882, 0.53333336, 0.78431374)
 border_width_left = 2
@@ -50,8 +63,12 @@ shadow_color = Color(0, 0, 0, 0.69411767)
 shadow_size = 10
 
 [node name="Node2D" type="Node2D" unique_id=1945731605]
+script = ExtResource("1_myy66")
 metadata/_edit_horizontal_guides_ = [488.0, 360.0]
 metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="TelaPause" parent="." unique_id=1778987312 instance=ExtResource("23_fava6")]
+imagem_tutorial = ExtResource("3_fava6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=461760156]
 offset_right = 1280.0
@@ -331,9 +348,10 @@ shape = SubResource("RectangleShape2D_wwmin")
 debug_color = Color(0, 0.6, 0.69803923, 0.42745098)
 
 [node name="GameManager" type="Node" parent="." unique_id=1236272923 node_paths=PackedStringArray("label_pontos", "label_tempo", "tela_final", "label_calculo_final")]
+process_mode = 3
 script = ExtResource("12_65ijb")
-label_pontos = NodePath("../UI/HUD/Pontuação")
-label_tempo = NodePath("../UI/HUD/Tempo")
+label_pontos = NodePath("../UI/HUD/PainelHUD/VBoxContainer/Pontuação")
+label_tempo = NodePath("../UI/HUD/PainelHUD/VBoxContainer/Tempo")
 tela_final = NodePath("../UI/EndScreen")
 label_calculo_final = NodePath("../UI/EndScreen/Panel/LabelCalculoFinal")
 
@@ -349,18 +367,32 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Pontuação" type="Label" parent="UI/HUD" unique_id=1278537814]
+[node name="PainelHUD" type="PanelContainer" parent="UI/HUD" unique_id=1454300046]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 87.0
+offset_bottom = 75.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/PainelHUD" unique_id=917353950]
+layout_mode = 2
+size_flags_stretch_ratio = 20.0
+
+[node name="Pontuação" type="Label" parent="UI/HUD/PainelHUD/VBoxContainer" unique_id=1278537814]
+layout_mode = 2
 text = "Pontuação:"
 
-[node name="Tempo" type="Label" parent="UI/HUD" unique_id=116848227]
-layout_mode = 0
-offset_top = 24.0
-offset_right = 58.0
-offset_bottom = 47.0
+[node name="Tempo" type="Label" parent="UI/HUD/PainelHUD/VBoxContainer" unique_id=116848227]
+layout_mode = 2
 text = "Tempo:"
+
+[node name="BotaoPause" type="TextureButton" parent="UI/HUD/PainelHUD/VBoxContainer" unique_id=1607695888]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+shortcut = SubResource("Shortcut_qeibb")
+texture_normal = ExtResource("19_7alqm")
+texture_hover = ExtResource("20_7alqm")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="EndScreen" type="Control" parent="UI" unique_id=931011249]
 visible = false
@@ -460,4 +492,5 @@ stretch_mode = 5
 [connection signal="area_entered" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_entered"]
 [connection signal="area_exited" from="slotPrateleira18" to="slotPrateleira18" method="_on_area_exited"]
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/HUD/PainelHUD/VBoxContainer/BotaoPause" to="." method="_on_botao_pause_pressed"]
 [connection signal="pressed" from="UI/EndScreen/Panel/BotaoVoltar" to="GameManager" method="_on_botao_voltar_pressed"]

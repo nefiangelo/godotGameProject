@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d2x00a0jymk6j" path="res://sprites/MiniGame2/ItemTres.tscn" id="6_ywf7d"]
 [ext_resource type="PackedScene" uid="uid://bnscp5ia3vnuk" path="res://sprites/MiniGame2/ItemQuatro.tscn" id="7_befc0"]
 [ext_resource type="PackedScene" uid="uid://bfy8kgkcy732" path="res://sprites/MiniGame2/ItemCinco.tscn" id="8_v52l1"]
+[ext_resource type="Script" uid="uid://d3cr4h8wed78" path="res://scripts/ScriptsMiniGame2/end_screen.gd" id="9_msoub"]
 [ext_resource type="Texture2D" uid="uid://bdmtkntkjgr70" path="res://sprites/MiniGame2/ItemUmQuebrado.png" id="13_befc0"]
 [ext_resource type="Script" uid="uid://bf0pibhtexcyh" path="res://scripts/ScriptsMiniGame2/zona_mech.gd" id="13_frieo"]
 [ext_resource type="Texture2D" uid="uid://c6dfh1ud7jk6w" path="res://sprites/menu/btn_ajuda.png" id="13_ix2w3"]
@@ -20,8 +21,23 @@
 [ext_resource type="Texture2D" uid="uid://b806ktcl6igts" path="res://sprites/menu/img_Tutorial_2.png" id="15_ywf7d"]
 [ext_resource type="Texture2D" uid="uid://dhx8s023erxhs" path="res://sprites/MiniGame2/esteiras_free.png" id="19_gfv7u"]
 [ext_resource type="Script" uid="uid://cim7tojmw32dm" path="res://scripts/ScriptsMiniGame2/parallax_background.gd" id="20_lfx7b"]
-[ext_resource type="Script" uid="uid://et11eb501lb8" path="res://scripts/ScriptsMiniGame2/tela_final.gd" id="21_lfx7b"]
+[ext_resource type="Texture2D" uid="uid://cvpgfqpo561gk" path="res://sprites/menu/btn_voltar.png" id="22_01q0t"]
 [ext_resource type="Script" uid="uid://c12d1hyue3hwc" path="res://scripts/ScriptsMiniGame2/game_manager.gd" id="22_i6fjw"]
+[ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="23_msoub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvh1c"]
+bg_color = Color(0.003921569, 0.24705882, 0.53333336, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.6509804, 0.19215687, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.69411767)
+shadow_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(220, 393)
@@ -43,6 +59,68 @@ script = ExtResource("1_qdtem")
 itens_possiveis = Array[PackedScene]([ExtResource("2_ubgkj"), ExtResource("3_5l3qx"), ExtResource("5_ix2w3"), ExtResource("4_bbnua"), ExtResource("6_ywf7d"), ExtResource("7_befc0"), ExtResource("8_v52l1")])
 metadata/_edit_horizontal_guides_ = [488.0, 360.0]
 metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="EndScreen" type="Control" parent="." unique_id=2144425417]
+process_mode = 3
+visible = false
+z_index = 100
+layout_mode = 3
+anchor_left = 0.18100001
+anchor_top = 0.2
+anchor_right = 0.81900007
+anchor_bottom = 0.78900003
+script = ExtResource("9_msoub")
+
+[node name="Panel" type="Panel" parent="EndScreen" unique_id=243888746]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = 136.0
+offset_right = 1016.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvh1c")
+
+[node name="Label" type="Label" parent="EndScreen/Panel" unique_id=684615293]
+layout_mode = 0
+offset_left = 272.0
+offset_right = 561.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "RESULTADO"
+
+[node name="LabelCalculoFinal" type="RichTextLabel" parent="EndScreen/Panel" unique_id=637663742]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 80.0
+offset_right = 624.0
+offset_bottom = 336.0
+bbcode_enabled = true
+
+[node name="BotaoVoltar" type="TextureButton" parent="EndScreen/Panel" unique_id=930161825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 325.0
+offset_top = 332.0
+offset_right = -317.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("22_01q0t")
+texture_hover = ExtResource("23_msoub")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=500247767]
 layer = -1
@@ -216,47 +294,18 @@ visible = false
 imagem_tutorial = ExtResource("15_ywf7d")
 
 [node name="TimerJogo" type="Timer" parent="." unique_id=1915232445]
-wait_time = 20.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="TelaFinal" type="CanvasLayer" parent="." unique_id=583258153]
+[node name="GameManager" type="Node" parent="." unique_id=570467868 node_paths=PackedStringArray("tela_final", "label_calculo_final", "botao_voltar")]
 process_mode = 3
-visible = false
-script = ExtResource("21_lfx7b")
-
-[node name="ColorRect" type="ColorRect" parent="TelaFinal" unique_id=178803026]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.7058824)
-
-[node name="PanelContainer" type="PanelContainer" parent="TelaFinal" unique_id=1582594240]
-offset_left = 379.0
-offset_top = 150.0
-offset_right = 909.0
-offset_bottom = 584.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TelaFinal/PanelContainer" unique_id=1863315614]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Titulo" type="Label" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=1212707506]
-layout_mode = 2
-
-[node name="Status" type="Label" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=562791445]
-layout_mode = 2
-
-[node name="BotaoMenu" type="Button" parent="TelaFinal/PanelContainer/VBoxContainer" unique_id=80802124]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-
-[node name="GameManager" type="Node" parent="." unique_id=570467868]
 script = ExtResource("22_i6fjw")
+tela_final = NodePath("../EndScreen")
+label_calculo_final = NodePath("../EndScreen/Panel/LabelCalculoFinal")
+botao_voltar = NodePath("../EndScreen/Panel/BotaoVoltar")
 
+[connection signal="pressed" from="EndScreen/Panel/BotaoVoltar" to="EndScreen" method="_on_botao_voltar_pressed"]
 [connection signal="timeout" from="ZonaMech/TimerConserto" to="ZonaMech" method="_on_timer_conserto_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

@@ -3,6 +3,9 @@ extends Node2D
 @export var itens_possiveis: Array[PackedScene]
 @onready var spawns = [$SpawnUm, $SpawnDois, $SpawnTres]
 
+# --- GAME MANAGER ----
+@onready var game_manager = $GameManager
+
 # ---- VARIÁVEIS DO HUD ----
 @onready var hud_fundo = $HUD/PanelContainer
 @onready var fundo_tempo = $HUD/FundoTempo
@@ -83,10 +86,13 @@ func _on_timer_jogo_timeout() -> void:
 func consertou_item(tipo_do_quebrado: int) -> void:
 	if not jogo_ativo: return
 	
+	# Aqui a gente diminui os itens e manda pontos pro GameManager (ex: 50 pontos por item)
 	if tipo_do_quebrado == 1 and objetivo_item1 > 0:
 		objetivo_item1 -= 1
+		game_manager.adicionar_ponto(50) 
 	elif tipo_do_quebrado == 2 and objetivo_item2 > 0:
 		objetivo_item2 -= 1
+		game_manager.adicionar_ponto(50)
 		
 	atualizar_textos_hud()
 	
@@ -95,20 +101,15 @@ func consertou_item(tipo_do_quebrado: int) -> void:
 
 func vitoria() -> void:
 	jogo_ativo = false
-	var pontos = int(timer_jogo.time_left) * 10 
-	
-	if has_node("TelaFinal"):
-		$TelaFinal.mostrar_tela(true, pontos)
-	else:
-		print("Erro: Nó 'TelaFinal' não encontrado na cena!")
+	# O jogo avisa o GameManager que ganhou e envia o tempo que sobrou no timer!
+	if game_manager:
+		game_manager.fim_de_jogo(int(timer_jogo.time_left))
 
 func derrota() -> void:
 	jogo_ativo = false
-	
-	if has_node("TelaFinal"):
-		$TelaFinal.mostrar_tela(false, 0)
-	else:
-		print("Erro: Nó 'TelaFinal' não encontrado na cena!")
+	# O jogo avisa o GameManager que perdeu (passando 0 de tempo restante)
+	if game_manager:
+		game_manager.fim_de_jogo(0)
 
 func _on_pause_button_pressed() -> void:
 	if has_node("TelaPause"):
