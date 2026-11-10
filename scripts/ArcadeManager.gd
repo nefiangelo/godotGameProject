@@ -6,8 +6,8 @@ var ordem_dos_jogos: Array = []
 var indice_atual: int = 0
 
 # Substitua pelos caminhos EXATOS das suas cenas de minigame!
-var caminho_jogo1 = "res://levels/Minigames/MiniGame1/Minigame1.tscn" 
-var caminho_jogo2 = "res://levels/Minigames/MiniGame2/Minigame2.tscn"
+var caminho_jogo1 = "res://levels/MiniGames/MiniGame1/miniGame1.tscn" 
+var caminho_jogo2 = "res://levels/MiniGames/MiniGame2/miniGame2.tscn"
 
 func iniciar_arcade() -> void:
 	modo_arcade = true
