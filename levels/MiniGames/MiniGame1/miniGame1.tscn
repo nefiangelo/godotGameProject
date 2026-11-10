@@ -356,6 +356,7 @@ tela_final = NodePath("../UI/EndScreen")
 label_calculo_final = NodePath("../UI/EndScreen/Panel/LabelCalculoFinal")
 
 [node name="Timer" type="Timer" parent="GameManager" unique_id=1404084029]
+process_mode = 1
 autostart = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1988128273]

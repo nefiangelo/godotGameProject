@@ -294,7 +294,7 @@ visible = false
 imagem_tutorial = ExtResource("15_ywf7d")
 
 [node name="TimerJogo" type="Timer" parent="." unique_id=1915232445]
-wait_time = 2.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
