@@ -175,9 +175,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame1/ButtonMinigame1" to="." method="_on_button_minigame_1_pressed"]
-[connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame1/ButtonMinigame1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame2/ButtonMinigame2" to="." method="_on_button_minigame_2_pressed"]
-[connection signal="pressed" from="gridMinigames/listaMinigames/BlockMiniGame2/ButtonMinigame2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="gridMinigames/navButtons/BtnAnterior" to="gridMinigames" method="_on_btn_anterior_pressed"]
 [connection signal="pressed" from="gridMinigames/navButtons/BtnProximo" to="gridMinigames" method="_on_btn_proximo_pressed"]
 [connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]

@@ -5,7 +5,7 @@ extends Control
 func _on_arcade_pressed() -> void:
 	ArcadeManager.iniciar_arcade()
 
-func _on_botao_jogar_pressed() -> void:
+func _on_iniciar_pressed() -> void:
 	# Garante que o jogo avulso nunca ache que é o Arcade
 	ArcadeManager.modo_arcade = false 
 	

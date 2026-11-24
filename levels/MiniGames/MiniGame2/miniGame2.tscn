@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cvpgfqpo561gk" path="res://sprites/menu/btn_voltar.png" id="22_01q0t"]
 [ext_resource type="Script" uid="uid://c12d1hyue3hwc" path="res://scripts/ScriptsMiniGame2/game_manager.gd" id="22_i6fjw"]
 [ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="23_msoub"]
+[ext_resource type="PackedScene" uid="uid://gs2jv85ppl28" path="res://levels/TelaInstrucoes.tscn" id="25_wvh1c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvh1c"]
 bg_color = Color(0.003921569, 0.24705882, 0.53333336, 0.78431374)
@@ -304,6 +305,20 @@ script = ExtResource("22_i6fjw")
 tela_final = NodePath("../EndScreen")
 label_calculo_final = NodePath("../EndScreen/Panel/LabelCalculoFinal")
 botao_voltar = NodePath("../EndScreen/Panel/BotaoVoltar")
+
+[node name="TelaInstrucoes" parent="." unique_id=591581192 instance=ExtResource("25_wvh1c")]
+texto_tutorial = "[center][font_size=32][b][color=gold] ESTEIRA DE REPAROS[/color][/b][/font_size][/center]
+
+[center][color=lightgray]Conserte os aparelhos o mais rápido que puder![/color][/center]
+
+[b]Sua missão:[/b] Arraste os itens que caem da esteira para as zonas corretas e zere o contador antes que o tempo acabe. Cuidado com o tempo de conserto!
+
+[font_size=22][b]REGRAS:[/b][/font_size]
+[color=orange][b]Quebrados no Mecânico:[/b][/color] +50 Pontos. (Ele leva 3 segundos por conserto. Se jogar outro enquanto ocupado, o item passa direto!)
+[color=green][b]Itens Bons:[/b][/color] Arraste para a mesa de espera.
+[color=gray][b]Lixo:[/b][/color] Arraste para o incinerador para manter a esteira limpa.
+
+[wave amp=30 freq=5] [color=aqua][b]BÔNUS SPEEDRUN:[/b][/color][/wave] Cada segundo que sobrar no relógio no final se transforma em [b]5 pontos extras[/b]. Administre bem o tempo da esteira!"
 
 [connection signal="pressed" from="EndScreen/Panel/BotaoVoltar" to="EndScreen" method="_on_botao_voltar_pressed"]
 [connection signal="timeout" from="ZonaMech/TimerConserto" to="ZonaMech" method="_on_timer_conserto_timeout"]

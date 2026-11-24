@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://ba6mi1nwpf3xg" path="res://sprites/menu/btn_voltar_hover.png" id="19_76ett"]
 [ext_resource type="Texture2D" uid="uid://bbysvsx5skd7i" path="res://sprites/menu/btn_ajuda_hover.png" id="20_7alqm"]
 [ext_resource type="PackedScene" uid="uid://dnaqlxdagv1dc" path="res://levels/Menu/MenuPause.tscn" id="23_fava6"]
+[ext_resource type="PackedScene" uid="uid://gs2jv85ppl28" path="res://levels/TelaInstrucoes.tscn" id="25_qeibb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65ijb"]
 size = Vector2(64, 116)
@@ -67,7 +68,21 @@ script = ExtResource("1_myy66")
 metadata/_edit_horizontal_guides_ = [488.0, 360.0]
 metadata/_edit_vertical_guides_ = [640.0]
 
+[node name="TelaInstrucoes" parent="." unique_id=1320079723 instance=ExtResource("25_qeibb")]
+texto_tutorial = "[center][font_size=32][b][color=gold] ORGANIZAÇÃO DE ESTOQUE[/color][/b][/font_size][/center]
+
+[center][color=lightgray]Organize o mais rápido que puder![/color][/center]
+
+[b]Sua missão:[/b] Arraste e solte cada caixa na prateleira com o formato exato dela antes que o tempo zere. Use a [b]lixeira[/b] com o botão \"Espaço\" se precisar!
+
+[font_size=22][b]REGRAS:[/b][/font_size]
+[color=green][b]Caixa no lugar certo:[/b][/color] +10 Pontos
+[color=red][b]Caixa no lugar errado:[/b][/color] -5 Pontos (Olhe bem o formato antes de soltar!)
+
+[wave amp=30 freq=5] [color=aqua][b]BÔNUS SPEEDRUN:[/b][/color][/wave] Cada segundo que sobrar no relógio no final se transforma em [b]5 pontos extras[/b]. Seja rápido e preciso!"
+
 [node name="TelaPause" parent="." unique_id=1778987312 instance=ExtResource("23_fava6")]
+visible = false
 imagem_tutorial = ExtResource("3_fava6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=461760156]
